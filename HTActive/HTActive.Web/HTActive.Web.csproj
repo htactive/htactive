@@ -1,0 +1,208 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jose-jwt" Version="2.4.0" />
+    <PackageReference Include="MailKit" Version="1.18.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.0.0-rtm-10062" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Content Remove="ClientApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\css\less\animate.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\.csslintrc" />
+    <None Include="wwwroot\assets\css\less\bootstrap\accordion.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\alerts.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\badges.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\bootstrap.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\breadcrumbs.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\button-groups.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\buttons.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\carousel.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\close.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\code.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\component-animations.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\dropdowns.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\forms.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\glyphicons.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\grid.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\input-groups.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\jumbotron.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\labels.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\list-group.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\media.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\alerts.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\background-variant.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\border-radius.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\buttons.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\center-block.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\clearfix.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\forms.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\gradients.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\grid-framework.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\grid.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\hide-text.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\image.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\labels.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\list-group.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\nav-divider.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\nav-vertical-align.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\opacity.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\pagination.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\panels.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\progress-bar.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\reset-filter.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\resize.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\responsive-visibility.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\size.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\tab-focus.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\table-row.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\text-emphasis.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\text-overflow.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\mixins\vendor-prefixes.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\modals.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\navbar.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\navs.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\normalize.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\pager.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\pagination.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\panels.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\popovers.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\print.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\progress-bars.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\responsive-embed.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\responsive-utilities.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\scaffolding.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\tables.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\theme.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\thumbnails.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\tooltip.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\type.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\utilities.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\variables.less" />
+    <None Include="wwwroot\assets\css\less\bootstrap\wells.less" />
+    <None Include="wwwroot\assets\css\less\custom-elements.less" />
+    <None Include="wwwroot\assets\css\less\custom-mixins.less" />
+    <None Include="wwwroot\assets\css\less\custom-variables.less" />
+    <None Include="wwwroot\assets\css\less\frontend-elements.less" />
+    <None Include="wwwroot\assets\css\less\frontend-footer.less" />
+    <None Include="wwwroot\assets\css\less\frontend-header.less" />
+    <None Include="wwwroot\assets\css\less\frontend-responsive.less" />
+    <None Include="wwwroot\assets\css\less\helpers.less" />
+    <None Include="wwwroot\assets\css\less\main.less" />
+    <None Include="wwwroot\assets\css\less\morfsearch.less" />
+    <None Include="wwwroot\assets\css\less\plugins.less" />
+    <None Include="wwwroot\assets\css\less\plugins\bootstrap-social.less" />
+    <None Include="wwwroot\assets\css\less\plugins\pace.less" />
+    <None Include="wwwroot\assets\css\less\plugins\portfolio.less" />
+    <None Include="wwwroot\assets\css\less\plugins\progressbars.less" />
+    <None Include="wwwroot\assets\css\less\slider.less" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\assets\fonts\linea.svg" />
+    <None Include="wwwroot\assets\fonts\revicons.svg" />
+    <None Include="wwwroot\assets\img\magnifier.svg" />
+    <None Include="wwwroot\assets\js\bootstrap\bootstrap.js" />
+    <None Include="wwwroot\assets\js\bootstrap\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\libs\classie.js" />
+    <None Include="wwwroot\assets\js\libs\date.js" />
+    <None Include="wwwroot\assets\js\libs\excanvas.min.js" />
+    <None Include="wwwroot\assets\js\libs\jquery-2.1.1.min.js" />
+    <None Include="wwwroot\assets\js\libs\jquery-2.1.1.min.map" />
+    <None Include="wwwroot\assets\js\libs\jquery-ui-1.10.4.min.js" />
+    <None Include="wwwroot\assets\js\libs\less-1.7.0.js" />
+    <None Include="wwwroot\assets\js\libs\less-1.7.0.min.js" />
+    <None Include="wwwroot\assets\js\libs\modernizr.custom.js" />
+    <None Include="wwwroot\assets\js\libs\moment-with-locales.js" />
+    <None Include="wwwroot\assets\js\libs\moment.js" />
+    <None Include="wwwroot\assets\js\libs\raphael-min.js" />
+    <None Include="wwwroot\assets\js\libs\raphael.js" />
+    <None Include="wwwroot\assets\js\libs\respond.min.js" />
+    <None Include="wwwroot\assets\js\libs\typeahead.bundle.js" />
+    <None Include="wwwroot\assets\js\libs\typeahead.jquery.min.js" />
+    <None Include="wwwroot\assets\js\main.js" />
+    <None Include="wwwroot\assets\js\pages\about.js" />
+    <None Include="wwwroot\assets\js\pages\blank.js" />
+    <None Include="wwwroot\assets\js\pages\contact.js" />
+    <None Include="wwwroot\assets\js\pages\home.js" />
+    <None Include="wwwroot\assets\js\pages\portfolio-item.js" />
+    <None Include="wwwroot\assets\js\pages\portfolio.js" />
+    <None Include="wwwroot\assets\plugins\core\browser-selector\css_browser_selector.js" />
+    <None Include="wwwroot\assets\plugins\core\fastclick\fastclick.js" />
+    <None Include="wwwroot\assets\plugins\core\pace\pace.js" />
+    <None Include="wwwroot\assets\plugins\core\pace\pace.min.js" />
+    <None Include="wwwroot\assets\plugins\misc\countTo\jquery.countTo.js" />
+    <None Include="wwwroot\assets\plugins\misc\gmaps\gmaps.js" />
+    <None Include="wwwroot\assets\plugins\misc\slider-revolution\jquery.themepunch.revolution.min.js" />
+    <None Include="wwwroot\assets\plugins\misc\slider-revolution\jquery.themepunch.tools.min.js" />
+    <None Include="wwwroot\assets\plugins\ui\carousel\owl.carousel.js" />
+    <None Include="wwwroot\assets\plugins\ui\carousel\owl.carousel.min.js" />
+    <None Include="wwwroot\assets\plugins\ui\match-height\jquery.matchHeight-min.js" />
+    <None Include="wwwroot\assets\plugins\ui\match-height\jquery.matchHeight.js" />
+    <None Include="wwwroot\assets\plugins\ui\mixitup\jquery.mixitup.js" />
+    <None Include="wwwroot\assets\plugins\ui\mixitup\jquery.mixitup.min.js" />
+    <None Include="wwwroot\assets\plugins\ui\progressbars\bootstrap-progressbar.js" />
+    <None Include="wwwroot\assets\plugins\ui\progressbars\bootstrap-progressbar.min.js" />
+    <None Include="wwwroot\assets\plugins\ui\waypoint\waypoints.js" />
+    <None Include="wwwroot\assets\plugins\ui\waypoint\waypoints.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\assets\plugins\forms\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HTActive.Common\HTActive.Common.csproj" />
+    <ProjectReference Include="..\HTActive.Entities\HTActive.Entities.csproj" />
+    <ProjectReference Include="..\HTActive.Repository\HTActive.Repository.csproj" />
+  </ItemGroup>
+
+  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+
+    <!-- In development, the dist files won't exist on the first run or when cloning to
+         a different machine, so rebuild them if not already present. -->
+    <Message Importance="high" Text="Performing first-run Webpack build..." />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec Command="npm install" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

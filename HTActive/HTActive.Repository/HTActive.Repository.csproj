@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HTActive.Common\HTActive.Common.csproj" />
+    <ProjectReference Include="..\HTActive.Entities\HTActive.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="IRepositoryTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IRepositoryTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="RepositoryInstance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepositoryInstance.cs</LastGenOutput>
+    </None>
+    <None Update="RepositoryTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepositoryTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="IRepositoryTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IRepositoryTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="RepositoryInstance.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RepositoryInstance.tt</DependentUpon>
+    </Compile>
+    <Compile Update="RepositoryTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RepositoryTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
