@@ -13,11 +13,11 @@ namespace HTActive.Repository
         {
         }
     }
-    public class DFWDBRepository
+    public class InstanceRepository
     {
 	    public IServiceProvider ServiceProvider{get;private set;}
 		public IBaseUnitOfWork<InstanceEntities> InstanceUnitOfWork{get;private set;}
-        public DFWDBRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork, IServiceProvider _serviceProvider)
+        public InstanceRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork, IServiceProvider _serviceProvider)
         {
 			this.InstanceUnitOfWork = unitOfWork;
 			this.ServiceProvider = _serviceProvider;

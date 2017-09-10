@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HTActive_Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public IActionResult Index()
         {

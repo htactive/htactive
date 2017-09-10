@@ -1,0 +1,11 @@
+﻿[
+  {
+    "controller": "UserFavorite",
+    "actions": [
+      {
+        "name": "CreateNewUserFavorite",
+        "claim": "UserFavorite_W"
+      }
+    ]
+  }
+]

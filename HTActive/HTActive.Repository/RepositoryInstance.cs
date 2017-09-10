@@ -13,11 +13,11 @@ namespace HTActive.Repository
         {
         }
     }
-    public class DFWDBRepository
+    public class InstanceRepository
     {
 	    public IServiceProvider ServiceProvider{get;private set;}
 		public IBaseUnitOfWork<InstanceEntities> InstanceUnitOfWork{get;private set;}
-        public DFWDBRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork, IServiceProvider _serviceProvider)
+        public InstanceRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork, IServiceProvider _serviceProvider)
         {
 			this.InstanceUnitOfWork = unitOfWork;
 			this.ServiceProvider = _serviceProvider;
@@ -99,6 +99,15 @@ namespace HTActive.Repository
 				(_UserRoleRepository = ServiceProvider.GetService<IUserRoleRepository>());
 			}
 		}
+		private IContentFooterRepository _ContentFooterRepository;
+        public IContentFooterRepository ContentFooterRepository 
+		{ 
+			get
+			{
+				return _ContentFooterRepository ?? 
+				(_ContentFooterRepository = ServiceProvider.GetService<IContentFooterRepository>());
+			}
+		}
 		#endregion
     }
 	
@@ -114,6 +123,7 @@ namespace HTActive.Repository
 			services.AddScoped<IUserLoginTokenRepository, UserLoginTokenRepository>();
 			services.AddScoped<IUserProfileRepository, UserProfileRepository>();
 			services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+			services.AddScoped<IContentFooterRepository, ContentFooterRepository>();
 		}
     }
 }

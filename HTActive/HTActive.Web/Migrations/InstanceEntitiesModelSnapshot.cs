@@ -34,6 +34,97 @@ namespace HTActive.Web.Migrations
                     b.ToTable("Claim");
                 });
 
+            modelBuilder.Entity("HTActive.Entities.ContentFooter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AboutUsHref")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("AboutUsText")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Address2")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Content1")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("CopyRight")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Facebook")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Flickr")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("GooglePlus")
+                        .HasMaxLength(512);
+
+                    b.Property<int?>("Language");
+
+                    b.Property<string>("LinkedIn")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Mobile")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Pinterest")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Skype")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Slogan")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Twitter")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("YouTube")
+                        .HasMaxLength(512);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContentFooter");
+                });
+
+            modelBuilder.Entity("HTActive.Entities.ContentMenu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("ContentFooterId");
+
+                    b.Property<string>("Link")
+                        .HasMaxLength(512);
+
+                    b.Property<int?>("Priority");
+
+                    b.Property<string>("Tab")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("Text")
+                        .HasMaxLength(512);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ContentFooterId");
+
+                    b.ToTable("ContentMenu");
+                });
+
             modelBuilder.Entity("HTActive.Entities.Image", b =>
                 {
                     b.Property<int>("Id")
@@ -188,6 +279,14 @@ namespace HTActive.Web.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRole");
+                });
+
+            modelBuilder.Entity("HTActive.Entities.ContentMenu", b =>
+                {
+                    b.HasOne("HTActive.Entities.ContentFooter", "ContentFooter")
+                        .WithMany("ContentMenus")
+                        .HasForeignKey("ContentFooterId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HTActive.Entities.RoleClaim", b =>

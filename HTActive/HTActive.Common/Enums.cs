@@ -19,4 +19,9 @@ namespace HTActive.Common
         Active = 1,
         Deactive = 2,
     }
+    public enum SiteLanguageTypeEnums
+    {
+        VI = 1,
+        EN = 2
+    }
 }

@@ -106,4 +106,17 @@ namespace HTActive.Repository
             return model.Id;
         }
 	}
+
+    public partial class ContentFooterRepository : BaseRepository<ContentFooter, InstanceEntities>, IContentFooterRepository
+    {
+        public ContentFooterRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+		protected override int GetKeyId(ContentFooter model)
+        {
+            return model.Id;
+        }
+	}
 }

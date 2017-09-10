@@ -19,6 +19,8 @@ namespace HTActive.Entities
         public DbSet<UserLoginToken> UserLoginToken { get; set; }
         public DbSet<UserProfile> UserProfile { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<ContentFooter> ContentFooter { get; set; }
+        public DbSet<ContentMenu> ContentMenu { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -42,6 +44,11 @@ namespace HTActive.Entities
             modelBuilder.Entity<Role>()
                 .HasMany(x => x.RoleClaims)
                 .WithOne(x => x.Role)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ContentFooter>().
+                HasMany(x => x.ContentMenus)
+                .WithOne(x => x.ContentFooter)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

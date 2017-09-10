@@ -34,4 +34,8 @@ namespace HTActive.Repository
     public partial interface IUserRoleRepository : IBaseRepository<UserRole>
     {
     }
+
+    public partial interface IContentFooterRepository : IBaseRepository<ContentFooter>
+    {
+    }
 }
