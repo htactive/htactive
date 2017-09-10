@@ -21,6 +21,11 @@ namespace HTActive.Entities
         public DbSet<UserRole> UserRole { get; set; }
         public DbSet<ContentFooter> ContentFooter { get; set; }
         public DbSet<ContentMenu> ContentMenu { get; set; }
+        public DbSet<ContentIndex> ContentIndex { get; set; }
+        public DbSet<ContentIndexAboutUsRight> ContentIndexAboutUsRight { get; set; }
+        public DbSet<ContentIndexFeature> ContentIndexFeature { get; set; }
+        public DbSet<ContentIndexTopSlide> ContentIndexTopSlide { get; set; }
+        public DbSet<ContentIndexWhyChoose> ContentIndexWhyChoose { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,6 +54,23 @@ namespace HTActive.Entities
             modelBuilder.Entity<ContentFooter>().
                 HasMany(x => x.ContentMenus)
                 .WithOne(x => x.ContentFooter)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ContentIndex>().
+                HasMany(x => x.Features)
+                .WithOne(x => x.ContentIndex)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ContentIndex>().
+                HasMany(x => x.WhyChooseReasons)
+                .WithOne(x => x.ContentIndex)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ContentIndex>().
+                HasMany(x => x.AboutUsRights)
+                .WithOne(x => x.ContentIndex)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ContentIndex>().
+                HasMany(x => x.TopSlides)
+                .WithOne(x => x.ContentIndex)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

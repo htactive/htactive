@@ -38,4 +38,8 @@ namespace HTActive.Repository
     public partial interface IContentFooterRepository : IBaseRepository<ContentFooter>
     {
     }
+
+    public partial interface IContentIndexRepository : IBaseRepository<ContentIndex>
+    {
+    }
 }

@@ -108,6 +108,15 @@ namespace HTActive.Repository
 				(_ContentFooterRepository = ServiceProvider.GetService<IContentFooterRepository>());
 			}
 		}
+		private IContentIndexRepository _ContentIndexRepository;
+        public IContentIndexRepository ContentIndexRepository 
+		{ 
+			get
+			{
+				return _ContentIndexRepository ?? 
+				(_ContentIndexRepository = ServiceProvider.GetService<IContentIndexRepository>());
+			}
+		}
 		#endregion
     }
 	
@@ -124,6 +133,7 @@ namespace HTActive.Repository
 			services.AddScoped<IUserProfileRepository, UserProfileRepository>();
 			services.AddScoped<IUserRoleRepository, UserRoleRepository>();
 			services.AddScoped<IContentFooterRepository, ContentFooterRepository>();
+			services.AddScoped<IContentIndexRepository, ContentIndexRepository>();
 		}
     }
 }

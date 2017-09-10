@@ -119,4 +119,17 @@ namespace HTActive.Repository
             return model.Id;
         }
 	}
+
+    public partial class ContentIndexRepository : BaseRepository<ContentIndex, InstanceEntities>, IContentIndexRepository
+    {
+        public ContentIndexRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+		protected override int GetKeyId(ContentIndex model)
+        {
+            return model.Id;
+        }
+	}
 }
