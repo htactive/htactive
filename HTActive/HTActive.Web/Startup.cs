@@ -84,17 +84,42 @@ namespace HTActive_Web
             
             app.UseMvc(routes =>
             {
+                routes.MapRoute("home", "{l:regex(^(|vi|en)$)}", new {
+                    controller = "Home", action="Index"
+                });
+                routes.MapRoute("products_l", "{l:regex(^(vi|en)$)}/products", new
+                {
+                    controller = "Product",
+                    action = "Index"
+                });
+                routes.MapRoute("products", "products", new
+                {
+                    controller = "Product",
+                    action = "Index"
+                });
+
+                routes.MapRoute("product_detail_l", "{l:regex(^(vi|en)$)}/products/{id}", new
+                {
+                    controller = "Product",
+                    action = "ProductDetail"
+                });
+                routes.MapRoute("product_detail", "products/{id}", new
+                {
+                    controller = "Product",
+                    action = "ProductDetail"
+                });
+
                 routes.MapRoute(name: "vi",
-                    template: "vi/{controller=Home}/{action=Index}/{id?}");
+                    template: "vi/{controller}/{action}/{id?}");
                 routes.MapRoute(name: "en",
                     template: "en/{controller=Home}/{action=Index}/{id?}");
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new { controller = "Home", action = "Index" });
+                //routes.MapSpaFallbackRoute(
+                //    name: "spa-fallback",
+                //    defaults: new { controller = "Home", action = "Index" });
             });
         }
     }

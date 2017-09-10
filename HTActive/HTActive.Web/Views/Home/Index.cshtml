@@ -41,21 +41,21 @@
                             }
                             @foreach (var slCon in listContent)
                             {
-                                <div class="tp-caption dark_gray_bg sfl medium tp-resizeme" data-x="0" data-y="@(170+ci*50)"
-                                     data-speed="600" data-start="@(1600+ci*200)" data-end="9400"
+                                <div class="tp-caption dark_gray_bg sfl medium tp-resizeme" data-x="0" data-y="@(170 + ci * 50)"
+                                     data-speed="600" data-start="@(1600 + ci * 200)" data-end="9400"
                                      data-endspeed="600">
                                     <i class="icon-check"></i>
                                 </div>
-                                <div class="tp-caption light_gray_bg sfb medium tp-resizeme" data-x="50" data-y="@(170+ci*50)"
-                                     data-speed="600" data-start="@(1600+ci*200)"
+                                <div class="tp-caption light_gray_bg sfb medium tp-resizeme" data-x="50" data-y="@(170 + ci * 50)"
+                                     data-speed="600" data-start="@(1600 + ci * 200)"
                                      data-end="9400" data-endspeed="600">
                                     @slCon
                                 </div>
                                 ci++;
                             }
 
-                            <div class="tp-caption dark_gray_bg sfb medium tp-resizeme" data-x="0" data-y="@(170+ci*50)"
-                                 data-speed="600" data-start="@(1600+ci*200)" data-end="9400"
+                            <div class="tp-caption dark_gray_bg sfb medium tp-resizeme" data-x="0" data-y="@(170 + ci * 50)"
+                                 data-speed="600" data-start="@(1600 + ci * 200)" data-end="9400"
                                  data-endspeed="600">
                                 @slide_top?.SlideFooter
                             </div>
@@ -122,11 +122,11 @@
                         {
                             <div class="col-sm-4">
                                 <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall"
-                                     data-effect-delay="@(fi++*200)">
+                                     data-effect-delay="@(fi++ * 200)">
                                     <i class="@feature?.Icon"></i>
                                     <h2>@feature?.Title</h2>
                                     <p>@feature?.Content</p>
-                                    <a href="/services" class="btn-default btn">@contentIndex?.ButtonReadMore</a>
+                                    <a href="@feature?.Url" class="btn-default btn">@contentIndex?.ButtonReadMore</a>
                                 </div>
                             </div>
                         }
@@ -167,25 +167,27 @@
                     </div>
                     <div class="col-md-6">
                         <div class="panel-group panel-dark" id="accordion">
+                            @{ var ri = 0;}
                             @foreach (var right in contentIndex?.AboutUsRights ?? new List<HTActive.Web.Models.ContentIndexAboutUsRightModel>())
                             {
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordion"
-                                               href="#{% if i == 0 %}collapseOne{% endif %}{% if i == 1 %}collapseTwo{% endif %}{% if i == 2 %}collapseThree{% endif %}{% if i == 3 %}collapseFour{% endif %}"
-                                               class="{% if i > 0 %}collapsed{% endif %}">
+                                               href="#collapse_@(ri)"
+                                               class="@(ri>0?"collapsed":"")">
                                                 <i class="@right?.Icon customwidth"></i>@right?.Title
                                             </a>
                                         </h4>
                                     </div>
-                                    <div id="{% if i == 0 %}collapseOne{% endif %}{% if i == 1 %}collapseTwo{% endif %}{% if i == 2 %}collapseThree{% endif %}{% if i == 3 %}collapseFour{% endif %}"
-                                         class="panel-collapse collapse {% if i == 0 %}in{% endif %}">
+                                    <div id="collapse_@(ri)"
+                                         class="panel-collapse collapse @(ri==0 ? "in":"")">
                                         <div class="panel-body">
                                             @right?.Content
                                         </div>
                                     </div>
                                 </div>
+                                ri++;
                             }
                         </div>
                     </div>
@@ -270,77 +272,6 @@
                 </div>
                 <!-- tabs end -->
 
-            </div>
-        </div>
-    </div>
-</div>
-<!-- section end -->
-<!-- section start -->
-<!-- ================ -->
-<div class="section gray-bg clearfix">
-    <div class="owl-carousel content-slider">
-        <div class="testimonial">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h2 class="title">Inspirational</h2>
-                        <div class="testimonial-image">
-                            <img src="/assets/voc/images/steve.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
-                        </div>
-                        <div class="testimonial-body">
-                            <p>
-                                Your work is going to fill a large part of your life, and the only way to be truly
-                                satisfied is to do what you believe is great work. And the only way to do great work is
-                                to love what you do. If you haven't found it yet, keep looking. Don't settle. As with
-                                all matters of the heart, you'll know when you find it.
-                            </p>
-                            <div class="testimonial-info-1">- Steve Jobs</div>
-                            <div class="testimonial-info-2">Apple Inc.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="testimonial">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h2 class="title">Innovation</h2>
-                        <div class="testimonial-image">
-                            <img src="/assets/voc/images/billgates.jpg" alt="Jane Doe" title="Jane Doe"
-                                 class="img-circle">
-                        </div>
-                        <div class="testimonial-body">
-                            <p>
-                                Software innovation, like almost every other kind of innovation, requires the ability to
-                                collaborate and share ideas with other people, and to sit down and talk with customers
-                                and get their feedback and understand their needs.
-                            </p>
-                            <div class="testimonial-info-1">- Bill Gates</div>
-                            <div class="testimonial-info-2">Microsoft Inc.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="testimonial">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h2 class="title">Simple concept</h2>
-                        <div class="testimonial-image">
-                            <img src="/assets/voc/images/dmr1.png" alt="Jane Doe" title="Jane Doe" class="img-circle">
-                        </div>
-                        <div class="testimonial-body">
-                            <p>
-                                UNIX is basically a simple operating system, but you have to be a genius to understand
-                                the simplicity.
-                            </p>
-                            <div class="testimonial-info-1">- Dennis Ritchie</div>
-                            <div class="testimonial-info-2">Creator of C language</div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

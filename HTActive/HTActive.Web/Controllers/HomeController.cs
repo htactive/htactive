@@ -15,7 +15,6 @@ namespace HTActive_Web.Controllers
         public HomeController(InstanceRepository instanceRepository) : base(instanceRepository)
         {
         }
-
         public IActionResult Index()
         {
             var entity = this.InstanceRepository.ContentIndexRepository.GetAll()
@@ -38,7 +37,6 @@ namespace HTActive_Web.Controllers
             };
             return View(viewmodel);
         }
-
         public IActionResult Error()
         {
             ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
