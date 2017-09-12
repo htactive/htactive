@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model HTActive.Web.Models.ServicePageViewModel
+
+@{
+    var contentService = Model?.ContentService;
+    var services = Model?.Services ?? new List<HTActive.Web.Models.ServiceModel>();
+}
+<!-- banner start -->
+<!-- ================ -->
+<div class="banner">
+    <div class="fixed-image section dark-translucent-bg parallax-bg-2">
+        <div class="container">
+            <div class="space-top"></div>
+            <h1>@contentService?.Title</h1>
+            <div class="separator-2"></div>
+            <p class="lead">@Html.Raw(contentService?.Content ?? string.Empty)</p>
+        </div>
+    </div>
+</div>
+<section class="main-container">
+
+    <div class="container">
+        <div class="row">
+            @foreach (var partition in contentService?.ContentServicePartitions ?? new List<HTActive.Web.Models.ContentServicePartitionModel>())
+            {
+
+                <div class="main col-md-12">
+
+                    <!-- page-title start -->
+                    <!-- ================ -->
+                    <h1 class="page-title">@partition?.Title</h1>
+                    <div class="separator-2"></div>
+                    <p class="lead">@partition?.Content</p>
+                    <!-- page-title end -->
+                    <!-- shop items start -->
+
+                    <div class="owl-carousel carousel">
+                        @foreach (var service in services?.Where(x => x.ServiceType == partition.ServiceType))
+                        {
+                            var serviceLanguage = service.ServiceLanguages.OrderBy(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage ? 0 : 1).FirstOrDefault();
+                            <div class="image-box">
+                                <div class="overlay-container">
+                                    <img class="product-image" src="@serviceLanguage?.ImageSrc" alt="@serviceLanguage?.ImageAlt">
+
+                                </div>
+
+                                <div class="image-box-body">
+                                    <h3 class="title">
+                                        <span>@serviceLanguage?.TitleText</span>
+                                    </h3>
+                                    <p class="cutline">@Html.Raw(serviceLanguage?.Description ?? string.Empty)</p>
+                                    <a href="/product-detail/@service.Id/@serviceLanguage?.TitleTagForSEO"
+                                       class="link hidden"><span>Read More</span></a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- shop items end -->
+
+                    <div class="clearfix"></div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+
+<!-- main-container end -->

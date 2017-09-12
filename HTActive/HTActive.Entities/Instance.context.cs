@@ -26,6 +26,18 @@ namespace HTActive.Entities
         public DbSet<ContentIndexFeature> ContentIndexFeature { get; set; }
         public DbSet<ContentIndexTopSlide> ContentIndexTopSlide { get; set; }
         public DbSet<ContentIndexWhyChoose> ContentIndexWhyChoose { get; set; }
+        public DbSet<ContentProduct> ContentProduct { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<ProductLanguage> ProductLanguage { get; set; }
+        public DbSet<ProductLanguageDescriptionDetail> ProductLanguageDescriptionDetail { get; set; }
+        public DbSet<ProductLanguageImageDetail> ProductLanguageImageDetail { get; set; }
+        public DbSet<ProductLanguageProductDetail> ProductLanguageProductDetail { get; set; }
+        public DbSet<ProductLanguageReviewDetail> ProductLanguageReviewDetail { get; set; }
+        public DbSet<Service> Service { get; set; }
+        public DbSet<ServiceLanguage> ServiceLanguage { get; set; }
+        public DbSet<ContentService> ContentService { get; set; }
+        public DbSet<ContentServicePartition> ContentServicePartition { get; set; }
+        public DbSet<ContentContact> ContentContact { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -72,6 +84,39 @@ namespace HTActive.Entities
                 HasMany(x => x.TopSlides)
                 .WithOne(x => x.ContentIndex)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Product>().
+                HasMany(x => x.ProductLanguages)
+                .WithOne(x => x.Product)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ProductLanguage>().
+                HasMany(x => x.ProductLanguageDescriptionDetails)
+                .WithOne(x => x.ProductLanguage)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ProductLanguage>().
+                HasMany(x => x.ProductLanguageProductDetails)
+                .WithOne(x => x.ProductLanguage)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ProductLanguage>().
+                HasMany(x => x.ImageDetails)
+                .WithOne(x => x.ProductLanguage)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ProductLanguage>().
+                HasMany(x => x.ProductLanguageReviewDetails)
+                .WithOne(x => x.ProductLanguage)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Service>().
+                HasMany(x => x.ServiceLanguages)
+                .WithOne(x => x.Service)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ContentService>().
+                HasMany(x => x.ContentServicePartitions)
+                .WithOne(x => x.ContentService)
+                .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }

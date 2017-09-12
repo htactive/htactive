@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model HTActive.Web.Models.ContactPageViewModel
+@{
+    var contact = Model.ContentContact;
+}
+<script src="/assets/plugins/jquery.validate.js"></script>
+<!-- banner start -->
+<!-- ================ -->
+<div class="banner" style="height: 344px;">
+    <!-- google maps start -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1917.1658816900813!2d108.2364820579333!3d16.048264797223485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219d8808e8cef%3A0xb68641142dda5bb7!2zOTEgVsO1IE5oxrAgSMawbmcsIE3hu7kgQW4sIE5nxakgSMOgbmggU8ahbiwgxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1479223360893"
+            width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <!-- google maps end -->
+</div>
+<section class="main-container">
+
+    <div class="container">
+        <div class="row">
+            <h1 class="page-title">@Html.Raw(contact?.ContactUs ?? string.Empty)</h1>
+            <aside class="col-md-4 col-md-push-8 col-lg-push-8">
+                <div class="sidebar">
+                    <div class="side vertical-divider-left">
+                        <h2 class="title">@Html.Raw(contact?.Title ?? string.Empty)</h2>
+                        <ul class="list">
+                            <li><strong></strong></li>
+                            <li><i class="fa fa-home pr-10"></i><abbr title="Address"></abbr>@Html.Raw(contact?.Address ?? string.Empty)</li>
+                            <li><i class="fa fa-phone pr-10"></i><abbr title="Phone"></abbr>@Html.Raw(contact?.Phone ?? string.Empty)</li>
+                            <li><i class="fa fa-skype pr-10"></i><abbr title="Skype"></abbr>@Html.Raw(contact?.Skype ?? string.Empty)</li>
+                            <li><i class="fa fa-envelope pr-10"></i><a href="mailto:services@htactive.com">@Html.Raw(contact?.HTEmail ?? string.Empty)</a></li>
+                        </ul>
+                        <!--ul class="social-links colored circle large">
+                            <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                            <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                        <a type="button" class="btn btn-default"><span class="fa fa-comments fa-2x"></span>  Live chat now</a-->
+                    </div>
+                </div>
+            </aside>
+            <!-- sidebar end -->
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main col-md-8  col-md-pull-4 col-lg-pull-4">
+                <p>@contact?.Content</p>
+                <div class="alert alert-success hidden" id="MessageSent">
+                    @contact?.Received
+                </div>
+                <div class="alert alert-danger hidden" id="MessageNotSent">
+                    @contact?.ErrorMessage
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form" role="form">
+                        <div class="form-group has-feedback">
+                            <label for="name">@contact?.Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="@contact?.NameHolder">
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="email">@contact?.Mail</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="@contact?.MailHolder">
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="subject">@contact?.Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="@contact?.SubjectHolder">
+                            <i class="fa fa-navicon form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="message">@contact?.Message</label>
+                            <textarea class="form-control" rows="6" id="message" name="message" placeholder="@contact?.MessageHolder"></textarea>
+                            <i class="fa fa-pencil form-control-feedback"></i>
+                        </div>
+                        <input type="submit" class="submit-button btn btn-default" value="@contact?.Button" data-loading="<i class='fa fa-spinner fa-spin fa-3x fa-fw'></i> @contact?.Loading">
+
+                    </form>
+                </div>
+            </div>
+            <!-- main end -->
+
+        </div>
+    </div>
+</section>
+<!-- main-container end -->
+<script type="text/javascript">
+    function submitContactForm() {
+        $.post('/contact/post',
+            {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                subject: $('#subject').val(),
+                message: $('#message').val()
+            },
+            function (data) {
+                eModal.alert("@contact?.ThanksMessage", "@contact?.Thanks");
+                $('#contact-form input,area').val('');
+            }).error(
+            function (data) {
+                eModal.alert("@contact.SorryMessage", "@contact.Sorry");
+            });
+    }
+</script>

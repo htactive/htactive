@@ -24,4 +24,16 @@ namespace HTActive.Common
         VI = 1,
         EN = 2
     }
+    public enum ProductTypeEnums
+    {
+        Game = 1,
+        Web = 2,
+        Application = 3
+    }
+    public enum ServiceTypeEnums
+    {
+        Game = 1,
+        Web = 2,
+        Application = 3
+    }
 }

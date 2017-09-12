@@ -12,6 +12,14 @@ new EntityMetadataRender(){Name = "UserProfile"},
 new EntityMetadataRender(){Name = "UserRole"},
 new EntityMetadataRender(){Name = "ContentFooter"},
 new EntityMetadataRender(){Name = "ContentIndex"},
+new EntityMetadataRender(){Name = "ContentProduct"},
+new EntityMetadataRender(){Name = "Product"},
+new EntityMetadataRender(){Name = "ProductLanguage"},
+new EntityMetadataRender(){Name = "Service"},
+new EntityMetadataRender(){Name = "ServiceLanguage"},
+new EntityMetadataRender(){Name = "ContentService"},
+new EntityMetadataRender(){Name = "ContentServicePartition"},
+new EntityMetadataRender(){Name = "ContentContact"},
 };
 #>
 

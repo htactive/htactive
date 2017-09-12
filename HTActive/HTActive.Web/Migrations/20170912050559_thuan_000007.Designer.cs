@@ -12,9 +12,10 @@ using System;
 namespace HTActive.Web.Migrations
 {
     [DbContext(typeof(InstanceEntities))]
-    partial class InstanceEntitiesModelSnapshot : ModelSnapshot
+    [Migration("20170912050559_thuan_000007")]
+    partial class thuan_000007
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,87 +33,6 @@ namespace HTActive.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Claim");
-                });
-
-            modelBuilder.Entity("HTActive.Entities.ContentContact", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Address")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Button")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("ContactUs")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Content")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("ErrorMessage")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("HTEmail")
-                        .HasMaxLength(512);
-
-                    b.Property<int?>("Language");
-
-                    b.Property<string>("Loading")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Mail")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("MailHolder")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Message")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("MessageHolder")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("NameHolder")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Received")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Skype")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Sorry")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("SorryMessage")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Subject")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("SubjectHolder")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Thanks")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("ThanksMessage")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("Title")
-                        .HasMaxLength(512);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ContentContact");
                 });
 
             modelBuilder.Entity("HTActive.Entities.ContentFooter", b =>

@@ -2,6 +2,128 @@
 @{
     ViewData["Title"] = "Index";
 }
+@model HTActive.Web.Models.ProductPageViewModel
+@{
+    var productTitle = Model?.ContentProduct;
+}
 
-<h2>Products</h2>
+<div class="banner">
+    <div class="fixed-image section dark-translucent-bg parallax-bg-3">
+        <div class="container">
+            <div class="space-top"></div>
+            <h1>@productTitle?.Title</h1>
+            <div class="separator-2"></div>
+            <p class="lead">@Html.Raw(productTitle?.Content ?? string.Empty)</p>
+        </div>
+    </div>
+</div>
+
+<section class="main-container">
+
+    <div class="container">
+        <div class="row">
+
+            <!-- main start -->
+            <!-- ================ -->
+
+            <div class="main col-md-12">
+
+                <!-- page-title start -->
+                <!-- ================ -->
+                <h1 class="page-title">@productTitle?.Header1</h1>
+                <div class="separator-2"></div>
+                <p class="lead">@productTitle?.Header1Content</p>
+                <!-- page-title end -->
+                <!-- shop items start -->
+
+                <div class="owl-carousel carousel">
+                    @foreach (var product in Model?.Products?.Where(x => x.ProductType == HTActive.Common.ProductTypeEnums.Application)?.ToList() ?? new List<HTActive.Web.Models.ProductModel>())
+                                {
+                                    var productLanguage = product.ProductLanguages.OrderByDescending(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage).FirstOrDefault();
+                        <div class="image-box">
+                            <div class="overlay-container">
+                                <img class="product-image" src="@productLanguage?.ImageSrc" alt="@productLanguage?.ImageAlt">
+
+                            </div>
+                            <div class="image-box-body">
+                                <h3 class="title"><a href="/product-detail/@product?.Id/@productLanguage?.TitleTagForSEO">@productLanguage?.TitleText</a></h3>
+                                <p class="cutline">@Html.Raw(productLanguage?.Description ?? string.Empty)</p>
+                                <a href="/product-detail/@product?.Id/@productLanguage?.TitleTagForSEO" class="link"><span>@productTitle.ButtonReadMore</span></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- shop items end -->
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="main col-md-12">
+
+                <!-- page-title start -->
+                <!-- ================ -->
+                <h1 class="page-title">@productTitle?.Header2</h1>
+                <div class="separator-2"></div>
+                <p class="lead">@productTitle?.Header2Content</p>
+                <!-- page-title end -->
+                <!-- shop items start -->
+
+                <div class="owl-carousel carousel">
+                    @foreach (var product in Model?.Products?.Where(x => x.ProductType == HTActive.Common.ProductTypeEnums.Game)?.ToList() ?? new List<HTActive.Web.Models.ProductModel>())
+                    {
+                        var productLanguage = product.ProductLanguages.OrderByDescending(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage).FirstOrDefault();
+                        <div class="image-box">
+                            <div class="overlay-container">
+                                <img class="product-image" src="@productLanguage?.ImageSrc" alt="@productLanguage?.ImageAlt">
+
+                            </div>
+                            <div class="image-box-body">
+                                <h3 class="title"><a href="/product-detail/@product?.Id/@productLanguage?.TitleTagForSEO">@productLanguage?.TitleText</a></h3>
+                                <p class="cutline">@Html.Raw(productLanguage?.Description ?? string.Empty)</p>
+                                <a href="/product-detail/@product?.Id/@productLanguage?.TitleTagForSEO" class="link"><span>@productTitle.ButtonReadMore</span></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- shop items end -->
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="main col-md-12">
+
+                <!-- page-title start -->
+                <!-- ================ -->
+                <h1 class="page-title">@productTitle?.Header3</h1>
+                <div class="separator-2"></div>
+                <p class="lead">@productTitle?.Header3Content</p>
+                <!-- page-title end -->
+                <!-- shop items start -->
+
+                <div class="owl-carousel carousel">
+                    @foreach (var product in Model?.Products?.Where(x => x.ProductType == HTActive.Common.ProductTypeEnums.Web)?.ToList() ?? new List<HTActive.Web.Models.ProductModel>())
+                    {
+                        var productLanguage = product.ProductLanguages.OrderByDescending(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage).FirstOrDefault();
+                        <div class="image-box">
+                            <div class="overlay-container">
+                                <img class="product-image" src="@productLanguage?.ImageSrc" alt="@productLanguage?.ImageAlt">
+
+                            </div>
+                            <div class="image-box-body">
+                                <h3 class="title"><a href="/product-detail/@product?.Id/@productLanguage?.TitleTagForSEO">@productLanguage?.TitleText</a></h3>
+                                <p class="cutline">@Html.Raw(productLanguage?.Description ?? string.Empty)</p>
+                                <a href="/product-detail/@product?.Id/@productLanguage?.TitleTagForSEO" class="link"><span>@productTitle.ButtonReadMore</span></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- shop items end -->
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- main end -->
+        </div>
+    </div>
+</section>
 

@@ -1,39 +1,31 @@
 ﻿using HTActive.Common;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HTActive.Entities
+namespace HTActive.Web.Models
 {
-    public class ContentService
+
+    public class ContentServiceModel
     {
-        [Key]
         public int Id { get; set; }
         public SiteLanguageTypeEnums Language { get; set; }
 
-        [StringLength(512)]
         public string Title { get; set; }
-        [StringLength(512)]
         public string Content { get; set; }
-        public List<ContentServicePartition> ContentServicePartitions { get; set; }
+        public List<ContentServicePartitionModel> ContentServicePartitions { get; set; }
     }
 
-    public class ContentServicePartition
+    public class ContentServicePartitionModel
     {
-        [Key]
         public int Id { get; set; }
         public int? ContentServiceId { get; set; }
-        [ForeignKey("ContentServiceId")]
-        public ContentService ContentService { get; set; }
+        public ContentServiceModel ContentService { get; set; }
         public int? Priority { get; set; }
         public ServiceTypeEnums ServiceType { get; set; }
 
-        [StringLength(512)]
         public string Title { get; set; }
-        [StringLength(512)]
         public string Content { get; set; }
 
     }

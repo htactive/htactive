@@ -42,4 +42,36 @@ namespace HTActive.Repository
     public partial interface IContentIndexRepository : IBaseRepository<ContentIndex>
     {
     }
+
+    public partial interface IContentProductRepository : IBaseRepository<ContentProduct>
+    {
+    }
+
+    public partial interface IProductRepository : IBaseRepository<Product>
+    {
+    }
+
+    public partial interface IProductLanguageRepository : IBaseRepository<ProductLanguage>
+    {
+    }
+
+    public partial interface IServiceRepository : IBaseRepository<Service>
+    {
+    }
+
+    public partial interface IServiceLanguageRepository : IBaseRepository<ServiceLanguage>
+    {
+    }
+
+    public partial interface IContentServiceRepository : IBaseRepository<ContentService>
+    {
+    }
+
+    public partial interface IContentServicePartitionRepository : IBaseRepository<ContentServicePartition>
+    {
+    }
+
+    public partial interface IContentContactRepository : IBaseRepository<ContentContact>
+    {
+    }
 }

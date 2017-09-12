@@ -98,15 +98,37 @@ namespace HTActive_Web
                     action = "Index"
                 });
 
-                routes.MapRoute("product_detail_l", "{l:regex(^(vi|en)$)}/products/{id}", new
+                routes.MapRoute("product_detail_l", "{l:regex(^(vi|en)$)}/product-detail/{id:int}/{*slug}", new
                 {
                     controller = "Product",
                     action = "ProductDetail"
                 });
-                routes.MapRoute("product_detail", "products/{id}", new
+                routes.MapRoute("product_detail", "product-detail/{id:int}/{*slug}", new
                 {
                     controller = "Product",
                     action = "ProductDetail"
+                });
+
+                routes.MapRoute("services_l", "{l:regex(^(vi|en)$)}/services", new
+                {
+                    controller = "Service",
+                    action = "Index"
+                });
+                routes.MapRoute("services", "services", new
+                {
+                    controller = "Service",
+                    action = "Index"
+                });
+
+                routes.MapRoute("contact_l", "{l:regex(^(vi|en)$)}/contact", new
+                {
+                    controller = "Contact",
+                    action = "Index"
+                });
+                routes.MapRoute("contact", "contact", new
+                {
+                    controller = "Contact",
+                    action = "Index"
                 });
 
                 routes.MapRoute(name: "vi",

@@ -2,6 +2,207 @@
 @{
     ViewData["Title"] = "ProductDetail";
 }
-@model string
-<h2>ProductDetail  @Model</h2>
+@model HTActive.Web.Models.ProductDetailPageViewModel
+@{
+    var productDetail = Model?.Product?.ProductLanguages?.OrderByDescending(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage).FirstOrDefault();
+}
+<div class="page-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i><a href="/products">@productDetail?.TypeName</a></li>
+                    <li class="active">@productDetail?.TitleText</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="main-container">
 
+    <div class="container">
+        <div class="row">
+
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main col-md-12">
+
+                <!-- page-title start -->
+                <!-- ================ -->
+                <h1 class="page-title margin-top-clear">@productDetail?.TitleText</h1>
+                <!-- page-title end -->
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-pills white space-top" role="tablist">
+                            <li class="active">
+                                <a href="#product-images" role="tab" data-toggle="tab" title="images">
+                                    <i class="fa fa-camera pr-5"></i>@productDetail?.ImageDetailText
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#product-video" role="tab" data-toggle="tab" title="video">
+                                    <i class="fa fa-video-camera pr-5"></i>@productDetail?.VideoDetailText
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes start-->
+                        <div class="tab-content clear-style">
+                            <div class="tab-pane active" id="product-images">
+                                <div class="owl-carousel content-slider-with-controls-bottom">
+                                    @foreach (var imageDetail in productDetail?.ImageDetails ?? new List<HTActive.Web.Models.ProductLanguageImageDetailModel>())
+                                    {
+                                        <div class="overlay-container">
+                                            <img src="@imageDetail?.Src" alt="@imageDetail?.Alt">
+                                            <a href="@imageDetail?.Src" class="popup-img overlay" title="@imageDetail?.Alt">
+                                                <i class="fa fa-search-plus"></i>
+                                            </a>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="product-video">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    @if (!string.IsNullOrEmpty(productDetail?.VideoDetailSrc))
+                                    {
+                                        <iframe class="embed-responsive-item" src="@productDetail?.VideoDetailSrc"></iframe>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tab panes end-->
+                        <hr>
+
+                    </div>
+
+                    <!-- product side start -->
+                    <aside class="col-md-8">
+                        <div class="sidebar">
+                            <div class="side product-item vertical-divider-left">
+                                <div class="tabs-style-2">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="active">
+                                            <a href="#h2tab1" role="tab" data-toggle="tab">
+                                                <i class="fa fa-file-text-o pr-5"></i>
+                                                @productDetail?.ProductDetailText
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-files-o pr-5"></i>@productDetail?.DescriptionDetailText</a>
+                                        </li>
+                                        @if (productDetail?.ProductLanguageReviewDetails?.Count > 0)
+                                        {
+                                            <li>
+
+                                                <a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i>(@productDetail?.ProductLanguageReviewDetails?.Count)@productDetail?.ReviewText</a>
+                                            </li>
+
+                                        }
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content padding-top-clear padding-bottom-clear">
+                                        <div class="tab-pane fade in active" id="h2tab1">
+                                            @foreach (var pDetail in productDetail?.ProductLanguageProductDetails ?? new List<HTActive.Web.Models.ProductLanguageProductDetailModel>())
+                                            {
+
+                                                <h4 class="title">@Html.Raw(pDetail?.Header ?? string.Empty)</h4>
+                                                <p>@Html.Raw(pDetail?.Content ?? string.Empty)</p>
+                                            }
+
+                                        </div>
+                                        <div class="tab-pane fade" id="h2tab2">
+                                            <h4 class="space-top">@productDetail?.DescriptionDetailHeader</h4>
+                                            <hr>
+                                            <dl class="dl-horizontal">
+                                                @foreach (var dDetail in productDetail?.ProductLanguageDescriptionDetails ?? new List<HTActive.Web.Models.ProductLanguageDescriptionDetailModel>())
+                                                {
+                                                    <dt>@dDetail?.Title</dt>
+                                                    <dd>@dDetail?.Content</dd>
+                                                }
+                                            </dl>
+                                            <hr>
+                                        </div>
+                                        <div class="tab-pane fade" id="h2tab3">
+                                            <!-- comments start -->
+                                            <div class="comments margin-clear space-top">
+                                                @foreach (var rDetail in productDetail?.ProductLanguageReviewDetails ?? new List<HTActive.Web.Models.ProductLanguageReviewDetailModel>())
+                                                {
+
+                                                    <div class="comment clearfix">
+                                                        <div class="comment-avatar">
+                                                            <img src="@rDetail?.ImageUrl" alt="">
+                                                        </div>
+                                                        <div class="comment-content">
+                                                            <h3>@rDetail?.Title</h3>
+                                                            <div class="comment-meta">
+                                                                @for (int i = 0; i < 5; i++)
+                                                                {
+                                                                    if (i < rDetail?.RateScore)
+                                                                    {
+                                                                        <i class="fa fa-star text-default"></i>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <i class="fa fa-star"></i>
+                                                                    }
+                                                                }
+                                                                | @rDetail?.RateDate
+                                                            </div>
+                                                            <div class="comment-body clearfix">
+                                                                <p>
+                                                                    @rDetail?.Detail
+                                                                </p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                    <!-- product side end -->
+                </div>
+
+            </div>
+            <!-- main end -->
+
+        </div>
+    </div>
+</section>
+<!-- main-container end -->
+<!-- section start -->
+<!-- ================ -->
+<div class="section gray-bg clearfix">
+    <div class="container">
+        <div class="call-to-action">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="title text-center">@productDetail?.LinkStoreHeader</h1>
+                    <p class="text-center">@productDetail?.LinkStoreContent</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <a style="width:230px" target="_blank" href="@productDetail?.LinkIOSStore" class="btn btn-default">App Store</a>
+                    </div>
+
+                    <div class="text-center">
+                        <a style="width:230px" target="_blank" href="@productDetail?.LinkAndroidStore" class="btn btn-default">Play Store</a>
+                    </div>
+
+                    <div class="text-center">
+                        <a style="width:230px" target="_blank" href="@productDetail?.LinkWPStore" class="btn btn-default">Windows Store</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

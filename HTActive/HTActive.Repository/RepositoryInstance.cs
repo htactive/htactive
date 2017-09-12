@@ -117,6 +117,78 @@ namespace HTActive.Repository
 				(_ContentIndexRepository = ServiceProvider.GetService<IContentIndexRepository>());
 			}
 		}
+		private IContentProductRepository _ContentProductRepository;
+        public IContentProductRepository ContentProductRepository 
+		{ 
+			get
+			{
+				return _ContentProductRepository ?? 
+				(_ContentProductRepository = ServiceProvider.GetService<IContentProductRepository>());
+			}
+		}
+		private IProductRepository _ProductRepository;
+        public IProductRepository ProductRepository 
+		{ 
+			get
+			{
+				return _ProductRepository ?? 
+				(_ProductRepository = ServiceProvider.GetService<IProductRepository>());
+			}
+		}
+		private IProductLanguageRepository _ProductLanguageRepository;
+        public IProductLanguageRepository ProductLanguageRepository 
+		{ 
+			get
+			{
+				return _ProductLanguageRepository ?? 
+				(_ProductLanguageRepository = ServiceProvider.GetService<IProductLanguageRepository>());
+			}
+		}
+		private IServiceRepository _ServiceRepository;
+        public IServiceRepository ServiceRepository 
+		{ 
+			get
+			{
+				return _ServiceRepository ?? 
+				(_ServiceRepository = ServiceProvider.GetService<IServiceRepository>());
+			}
+		}
+		private IServiceLanguageRepository _ServiceLanguageRepository;
+        public IServiceLanguageRepository ServiceLanguageRepository 
+		{ 
+			get
+			{
+				return _ServiceLanguageRepository ?? 
+				(_ServiceLanguageRepository = ServiceProvider.GetService<IServiceLanguageRepository>());
+			}
+		}
+		private IContentServiceRepository _ContentServiceRepository;
+        public IContentServiceRepository ContentServiceRepository 
+		{ 
+			get
+			{
+				return _ContentServiceRepository ?? 
+				(_ContentServiceRepository = ServiceProvider.GetService<IContentServiceRepository>());
+			}
+		}
+		private IContentServicePartitionRepository _ContentServicePartitionRepository;
+        public IContentServicePartitionRepository ContentServicePartitionRepository 
+		{ 
+			get
+			{
+				return _ContentServicePartitionRepository ?? 
+				(_ContentServicePartitionRepository = ServiceProvider.GetService<IContentServicePartitionRepository>());
+			}
+		}
+		private IContentContactRepository _ContentContactRepository;
+        public IContentContactRepository ContentContactRepository 
+		{ 
+			get
+			{
+				return _ContentContactRepository ?? 
+				(_ContentContactRepository = ServiceProvider.GetService<IContentContactRepository>());
+			}
+		}
 		#endregion
     }
 	
@@ -134,6 +206,14 @@ namespace HTActive.Repository
 			services.AddScoped<IUserRoleRepository, UserRoleRepository>();
 			services.AddScoped<IContentFooterRepository, ContentFooterRepository>();
 			services.AddScoped<IContentIndexRepository, ContentIndexRepository>();
+			services.AddScoped<IContentProductRepository, ContentProductRepository>();
+			services.AddScoped<IProductRepository, ProductRepository>();
+			services.AddScoped<IProductLanguageRepository, ProductLanguageRepository>();
+			services.AddScoped<IServiceRepository, ServiceRepository>();
+			services.AddScoped<IServiceLanguageRepository, ServiceLanguageRepository>();
+			services.AddScoped<IContentServiceRepository, ContentServiceRepository>();
+			services.AddScoped<IContentServicePartitionRepository, ContentServicePartitionRepository>();
+			services.AddScoped<IContentContactRepository, ContentContactRepository>();
 		}
     }
 }

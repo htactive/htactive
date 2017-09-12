@@ -605,7 +605,12 @@
 								$("#MessageNotSent").removeClass("hidden");
 								$("#MessageSent").addClass("hidden");
 							}
-						}
+                        },
+                        error: function () {
+                            $("#MessageNotSent").removeClass("hidden");
+                            $("#MessageSent").addClass("hidden");
+                            $(".submit-button").button('reset');
+                        }
 					});
 				},
 				// debug: true,
