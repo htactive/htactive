@@ -60,6 +60,7 @@ namespace HTActive_Web.Controllers
                 .Include("ProductLanguages.ProductLanguageDescriptionDetails")
                 .Include("ProductLanguages.ProductLanguageProductDetails")
                 .Include("ProductLanguages.ProductLanguageReviewDetails")
+                .Include("ProductLanguages.LinkStores")
                 .FirstOrDefault(x => x.Id == idInt);
             var model = Mapper.ToModel(item);
             model.ProductLanguages = item.ProductLanguages.Select(pl =>
@@ -71,6 +72,7 @@ namespace HTActive_Web.Controllers
                     plm.ProductLanguageDescriptionDetails = pl?.ProductLanguageDescriptionDetails?.Select(Mapper.ToModel).ToList();
                     plm.ProductLanguageProductDetails = pl?.ProductLanguageProductDetails?.Select(Mapper.ToModel).ToList();
                     plm.ProductLanguageReviewDetails = pl?.ProductLanguageReviewDetails?.Select(Mapper.ToModel).ToList();
+                    plm.LinkStores = pl?.LinkStores?.Select(Mapper.ToModel).ToList();
                 }
                 return plm;
             }).ToList();

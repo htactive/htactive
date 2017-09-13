@@ -33,6 +33,7 @@ namespace HTActive.Entities
         public DbSet<ProductLanguageImageDetail> ProductLanguageImageDetail { get; set; }
         public DbSet<ProductLanguageProductDetail> ProductLanguageProductDetail { get; set; }
         public DbSet<ProductLanguageReviewDetail> ProductLanguageReviewDetail { get; set; }
+        public DbSet<ProductLanguageLinkStore> ProductLanguageLinkStore { get; set; }
         public DbSet<Service> Service { get; set; }
         public DbSet<ServiceLanguage> ServiceLanguage { get; set; }
         public DbSet<ContentService> ContentService { get; set; }
@@ -104,6 +105,10 @@ namespace HTActive.Entities
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<ProductLanguage>().
                 HasMany(x => x.ProductLanguageReviewDetails)
+                .WithOne(x => x.ProductLanguage)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ProductLanguage>().
+                HasMany(x => x.LinkStores)
                 .WithOne(x => x.ProductLanguage)
                 .OnDelete(DeleteBehavior.Cascade);
 

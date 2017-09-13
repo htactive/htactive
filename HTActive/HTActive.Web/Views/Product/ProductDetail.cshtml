@@ -106,7 +106,7 @@
                                     <!-- Tab panes -->
                                     <div class="tab-content padding-top-clear padding-bottom-clear">
                                         <div class="tab-pane fade in active" id="h2tab1">
-                                            @foreach (var pDetail in productDetail?.ProductLanguageProductDetails ?? new List<HTActive.Web.Models.ProductLanguageProductDetailModel>())
+                                            @foreach (var pDetail in productDetail?.ProductLanguageProductDetails?.OrderBy(x => x.Priority).ToList() ?? new List<HTActive.Web.Models.ProductLanguageProductDetailModel>())
                                             {
 
                                                 <h4 class="title">@Html.Raw(pDetail?.Header ?? string.Empty)</h4>
@@ -189,18 +189,13 @@
                     <p class="text-center">@productDetail?.LinkStoreContent</p>
                 </div>
                 <div class="col-md-4">
-                    <div class="text-center">
-                        <a style="width:230px" target="_blank" href="@productDetail?.LinkIOSStore" class="btn btn-default">App Store</a>
-                    </div>
+                    @foreach (var linkStore in productDetail?.LinkStores)
+                    {
 
-                    <div class="text-center">
-                        <a style="width:230px" target="_blank" href="@productDetail?.LinkAndroidStore" class="btn btn-default">Play Store</a>
-                    </div>
-
-                    <div class="text-center">
-                        <a style="width:230px" target="_blank" href="@productDetail?.LinkWPStore" class="btn btn-default">Windows Store</a>
-                    </div>
-
+                        <div class="text-center">
+                            <a style="width:230px" target="_blank" href="@linkStore?.Link" class="btn btn-default">@linkStore.Text</a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

@@ -52,12 +52,6 @@ namespace HTActive.Entities
         [StringLength(512)]
         public string LinkStoreContent { get; set; }
         [StringLength(512)]
-        public string LinkIOSStore { get; set; }
-        [StringLength(512)]
-        public string LinkAndroidStore { get; set; }
-        [StringLength(512)]
-        public string LinkWPStore { get; set; }
-        [StringLength(512)]
         public string Description { get; set; }
         [StringLength(512)]
         public string ImageSrc { get; set; }
@@ -69,6 +63,7 @@ namespace HTActive.Entities
         public string TitleText { get; set; }
         [StringLength(512)]
         public string ProductDetailText { get; set; }
+        public List<ProductLanguageLinkStore> LinkStores { get; set; }
     }
     public class ProductLanguageImageDetail
     {
@@ -92,7 +87,7 @@ namespace HTActive.Entities
 
         [StringLength(512)]
         public string Header { get; set; }
-        [StringLength(512)]
+        [StringLength(2048)]
         public string Content { get; set; }
     }
     public class ProductLanguageDescriptionDetail
@@ -124,5 +119,18 @@ namespace HTActive.Entities
         public float RateScore { get; set; }
         [StringLength(512)]
         public string RateDate { get; set; }
+    }
+
+    public class ProductLanguageLinkStore
+    {
+        public int Id { get; set; }
+        public int? ProductLanguageId { get; set; }
+        [ForeignKey("ProductLanguageId")]
+        public ProductLanguage ProductLanguage { get; set; }
+
+        [StringLength(512)]
+        public string Text { get; set; }
+        [StringLength(512)]
+        public string Link { get; set; }
     }
 }

@@ -12,9 +12,10 @@ using System;
 namespace HTActive.Web.Migrations
 {
     [DbContext(typeof(InstanceEntities))]
-    partial class InstanceEntitiesModelSnapshot : ModelSnapshot
+    [Migration("20170913064301_thuan_000009")]
+    partial class thuan_000009
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -523,10 +524,19 @@ namespace HTActive.Web.Migrations
 
                     b.Property<int?>("Language");
 
+                    b.Property<string>("LinkAndroidStore")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("LinkIOSStore")
+                        .HasMaxLength(512);
+
                     b.Property<string>("LinkStoreContent")
                         .HasMaxLength(512);
 
                     b.Property<string>("LinkStoreHeader")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("LinkWPStore")
                         .HasMaxLength(512);
 
                     b.Property<string>("ProductDetailText")
@@ -600,26 +610,6 @@ namespace HTActive.Web.Migrations
                     b.HasIndex("ProductLanguageId");
 
                     b.ToTable("ProductLanguageImageDetail");
-                });
-
-            modelBuilder.Entity("HTActive.Entities.ProductLanguageLinkStore", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Link")
-                        .HasMaxLength(512);
-
-                    b.Property<int?>("ProductLanguageId");
-
-                    b.Property<string>("Text")
-                        .HasMaxLength(512);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductLanguageId");
-
-                    b.ToTable("ProductLanguageLinkStore");
                 });
 
             modelBuilder.Entity("HTActive.Entities.ProductLanguageProductDetail", b =>
@@ -926,14 +916,6 @@ namespace HTActive.Web.Migrations
                 {
                     b.HasOne("HTActive.Entities.ProductLanguage", "ProductLanguage")
                         .WithMany("ImageDetails")
-                        .HasForeignKey("ProductLanguageId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HTActive.Entities.ProductLanguageLinkStore", b =>
-                {
-                    b.HasOne("HTActive.Entities.ProductLanguage", "ProductLanguage")
-                        .WithMany("LinkStores")
                         .HasForeignKey("ProductLanguageId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -12,9 +12,10 @@ using System;
 namespace HTActive.Web.Migrations
 {
     [DbContext(typeof(InstanceEntities))]
-    partial class InstanceEntitiesModelSnapshot : ModelSnapshot
+    [Migration("20170913081326_thuan_000010")]
+    partial class thuan_000010
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -523,10 +524,19 @@ namespace HTActive.Web.Migrations
 
                     b.Property<int?>("Language");
 
+                    b.Property<string>("LinkAndroidStore")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("LinkIOSStore")
+                        .HasMaxLength(512);
+
                     b.Property<string>("LinkStoreContent")
                         .HasMaxLength(512);
 
                     b.Property<string>("LinkStoreHeader")
+                        .HasMaxLength(512);
+
+                    b.Property<string>("LinkWPStore")
                         .HasMaxLength(512);
 
                     b.Property<string>("ProductDetailText")

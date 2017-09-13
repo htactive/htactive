@@ -36,29 +36,27 @@
                     <!-- page-title end -->
                     <!-- shop items start -->
 
-                    <div class="owl-carousel carousel">
+                    <div class="image-boxes isotope-container row">
                         @foreach (var service in services?.Where(x => x.ServiceType == partition.ServiceType))
                         {
                             var serviceLanguage = service.ServiceLanguages.OrderBy(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage ? 0 : 1).FirstOrDefault();
-                            <div class="image-box">
-                                <div class="overlay-container">
-                                    <img class="product-image" src="@serviceLanguage?.ImageSrc" alt="@serviceLanguage?.ImageAlt">
-
-                                </div>
-
-                                <div class="image-box-body">
-                                    <h3 class="title">
-                                        <span>@serviceLanguage?.TitleText</span>
-                                    </h3>
-                                    <p class="cutline">@Html.Raw(serviceLanguage?.Description ?? string.Empty)</p>
-                                    <a href="/product-detail/@service.Id/@serviceLanguage?.TitleTagForSEO"
-                                       class="link hidden"><span>Read More</span></a>
+                            <div class="col-md-3 col-sm-6 isotope-item web-design">
+                                <div class="image-box">
+                                    <div class="overlay-container">
+                                        <img src="@serviceLanguage?.ImageSrc" alt="@serviceLanguage?.ImageAlt">
+                                    </div>
+                                    <div class="image-box-body">
+                                        <h3 class="title"><span >@serviceLanguage?.TitleText</span></h3>
+                                        <p class="cutline">@Html.Raw(serviceLanguage?.Description ?? string.Empty)</p>
+                                        <a href="/product-detail/@service.Id/@serviceLanguage?.TitleTagForSEO"
+                                           class="link hidden"><span>Read More</span></a>
+                                    </div>
                                 </div>
                             </div>
                         }
                     </div>
 
-                    <!-- shop items end -->
+                    <!-- portfolio items end -->
 
                     <div class="clearfix"></div>
                 </div>

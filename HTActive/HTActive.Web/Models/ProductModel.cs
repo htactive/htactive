@@ -29,14 +29,12 @@ namespace HTActive.Web.Models
         public List<ProductLanguageDescriptionDetailModel> ProductLanguageDescriptionDetails { get; set; }
         public string ReviewText { get; set; }
         public List<ProductLanguageReviewDetailModel> ProductLanguageReviewDetails { get; set; }
+        public List<ProductLanguageLinkStoreModel> LinkStores { get; set; }
         public string VideoDetailText { get; set; }
         public string VideoDetailSrc { get; set; }
         public string VideoDetailAlt { get; set; }
         public string LinkStoreHeader { get; set; }
         public string LinkStoreContent { get; set; }
-        public string LinkIOSStore { get; set; }
-        public string LinkAndroidStore { get; set; }
-        public string LinkWPStore { get; set; }
         public string Description { get; set; }
         public string ImageSrc { get; set; }
         public string ImageAlt { get; set; }
@@ -82,5 +80,14 @@ namespace HTActive.Web.Models
         public string Detail { get; set; }
         public float RateScore { get; set; }
         public string RateDate { get; set; }
+    }
+    public class ProductLanguageLinkStoreModel
+    {
+        public int Id { get; set; }
+        public int? ProductLanguageId { get; set; }
+        public ProductLanguageModel ProductLanguage { get; set; }
+
+        public string Text { get; set; }
+        public string Link { get; set; }
     }
 }
