@@ -47,9 +47,9 @@
                                 <img src="@productLanguage?.ImageSrc" alt="@productLanguage?.ImageAlt">
                             </div>
                             <div class="image-box-body">
-                                <h3 class="title"><a href="/product-detail/@product?.Id/@productLanguage?.TitleTagForSEO">@productLanguage?.TitleText</a></h3>
+                                <h3 class="title"><a href="product-detail/@product?.Id/@productLanguage?.TitleTagForSEO">@productLanguage?.TitleText</a></h3>
                                 <p class="cutline">@Html.Raw(productLanguage?.Description ?? string.Empty)</p>
-                                <a href="/product-detail/@product?.Id/@productLanguage?.TitleTagForSEO" class="link"><span>@productTitle.ButtonReadMore</span></a>
+                                <a href="product-detail/@product?.Id/@productLanguage?.TitleTagForSEO" class="link"><span>@productTitle.ButtonReadMore</span></a>
                             </div>
                         </div>
                     </div>
