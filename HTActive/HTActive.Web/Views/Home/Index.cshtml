@@ -1,9 +1,10 @@
-@{
-    ViewData["Title"] = "Home Page";
-}
+
 @model HTActive.Web.Models.HomePageViewModel
 @{
     var contentIndex = Model.ContentIndex;
+}
+@{
+    ViewData["Title"] = contentIndex?.HomePageTitle ?? "Home Page";
 }
 <!-- banner start -->
 <!-- ================ -->

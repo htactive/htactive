@@ -47,6 +47,8 @@ namespace HTActive.Entities
         public string WhyChooseTitle { get; set; }
         [StringLength(512)]
         public string WhyChooseContent { get; set; }
+        [StringLength(512)]
+        public string HomePageTitle { get; set; }
         public List<ContentIndexWhyChoose> WhyChooseReasons { get; set; }
         public List<ContentIndexAboutUsRight> AboutUsRights { get; set; }
         public List<ContentIndexFeature> Features { get; set; }

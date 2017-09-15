@@ -18,6 +18,8 @@ namespace HTActive.Entities
         public string Title { get; set; }
         [StringLength(512)]
         public string Content { get; set; }
+        [StringLength(512)]
+        public string ServicePageTitle { get; set; }
         public List<ContentServicePartition> ContentServicePartitions { get; set; }
     }
 

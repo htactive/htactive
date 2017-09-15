@@ -25,6 +25,7 @@ namespace HTActive.Web.Mappers
                 Id = entity.Id,
                 Language = entity.Language,
                 Title = entity.Title,
+                ProductPageTitle = entity.ProductPageTitle
             };
         }
     }

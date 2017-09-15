@@ -14,6 +14,7 @@ namespace HTActive.Web.Models
 
         public string Title { get; set; }
         public string Content { get; set; }
+        public string ServicePageTitle { get; set; }
         public List<ContentServicePartitionModel> ContentServicePartitions { get; set; }
     }
 

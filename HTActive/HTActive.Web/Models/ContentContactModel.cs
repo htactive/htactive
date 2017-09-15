@@ -33,5 +33,6 @@ namespace HTActive.Web.Models
         public string SorryMessage { get; set; }
         public string Sorry { get; set; }
         public string Loading { get; set; }
+        public string ContactPageTitle { get; set; }
     }
 }

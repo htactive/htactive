@@ -49,7 +49,7 @@
     <meta name="twitter:image" content="modules/core/client/img/brand/logo.png">
 
     <!-- Fav Icon -->
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
     <!-- Web Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext'
@@ -253,8 +253,8 @@
                                         <!-- Collect the nav links, forms, and other content for toggling -->
                                         <div class="collapse navbar-collapse" id="navbar-collapse-1">
                                             <ul class="nav navbar-nav navbar-right">
-                                                @foreach (var menuItem in (contentFooter?.ContentMenus ?? new List<HTActive.Entities.ContentMenu>()))
-            {
+                                                @foreach (var menuItem in (contentFooter?.ContentMenus.OrderBy(x => x.Priority).ToList() ?? new List<HTActive.Entities.ContentMenu>()))
+                                                {
                                                     <li class="@(tab == menuItem?.Tab ? "active" : "")">
                                                         <a href="@menuItem?.Link">@menuItem?.Text</a>
                                                     </li>

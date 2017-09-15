@@ -29,6 +29,7 @@ namespace HTActive.Web.Models
         public string WhyChooseContent { get; set; }
         public List<ContentIndexWhyChooseModel> WhyChooseReasons { get; set; }
         public List<ContentIndexTopSlideModel> TopSlides { get; set; }
+        public string HomePageTitle { get; set; }
     }
     public class ContentIndexWhyChooseModel
     {

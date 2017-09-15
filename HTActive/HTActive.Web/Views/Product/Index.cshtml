@@ -1,10 +1,9 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
-@model HTActive.Web.Models.ProductPageViewModel
+﻿@model HTActive.Web.Models.ProductPageViewModel
 @{
     var productTitle = Model?.ContentProduct;
+}
+@{
+    ViewData["Title"] = productTitle?.ProductPageTitle ?? "Products";
 }
 
 <div class="banner">

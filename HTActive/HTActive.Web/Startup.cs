@@ -130,6 +130,17 @@ namespace HTActive_Web
                     controller = "Contact",
                     action = "Index"
                 });
+                
+                routes.MapRoute("news_l", "{l:regex(^(vi|en)$)}/news", new
+                {
+                    controller = "News",
+                    action = "Index"
+                });
+                routes.MapRoute("news", "news", new
+                {
+                    controller = "News",
+                    action = "Index"
+                });
 
                 routes.MapRoute(name: "vi",
                     template: "vi/{controller}/{action}/{id?}");

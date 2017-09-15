@@ -1,10 +1,9 @@
-﻿
-@{
-    ViewData["Title"] = "ProductDetail";
-}
-@model HTActive.Web.Models.ProductDetailPageViewModel
+﻿@model HTActive.Web.Models.ProductDetailPageViewModel
 @{
     var productDetail = Model?.Product?.ProductLanguages?.OrderByDescending(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage).FirstOrDefault();
+}
+@{
+    ViewData["Title"] = productDetail?.TitleText ?? "Product Detail";
 }
 <div class="page-intro">
     <div class="container">

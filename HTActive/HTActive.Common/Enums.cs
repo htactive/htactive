@@ -36,4 +36,10 @@ namespace HTActive.Common
         Web = 2,
         Application = 3
     }
+    public enum NewsCoverTypeEnums
+    {
+        None = 0,
+        Image = 1,
+        Video = 2,
+    }
 }

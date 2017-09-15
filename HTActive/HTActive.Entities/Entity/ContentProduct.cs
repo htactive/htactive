@@ -31,5 +31,7 @@ namespace HTActive.Entities
         public string Header3Content { get; set; }
         [StringLength(512)]
         public string ButtonReadMore { get; set; }
+        [StringLength(512)]
+        public string ProductPageTitle { get; set; }
     }
 }

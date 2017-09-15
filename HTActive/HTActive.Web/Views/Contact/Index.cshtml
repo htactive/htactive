@@ -1,10 +1,9 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
-@model HTActive.Web.Models.ContactPageViewModel
+﻿@model HTActive.Web.Models.ContactPageViewModel
 @{
     var contact = Model.ContentContact;
+}
+@{
+    ViewData["Title"] = contact?.ContactPageTitle ?? "Contact";
 }
 <script src="/assets/plugins/jquery.validate.js"></script>
 <!-- banner start -->

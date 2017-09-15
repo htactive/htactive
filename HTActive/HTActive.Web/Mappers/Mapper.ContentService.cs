@@ -17,7 +17,8 @@ namespace HTActive.Web.Mappers
                 Id = entity.Id,
                 Title = entity.Title,
                 Language = entity.Language,
-                Content = entity.Content
+                Content = entity.Content,
+                ServicePageTitle = entity.ServicePageTitle
             };
         }
     }

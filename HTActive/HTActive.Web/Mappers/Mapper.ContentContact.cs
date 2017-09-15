@@ -39,6 +39,7 @@ namespace HTActive.Web.Mappers
                 SorryMessage = entity.SorryMessage,
                 Sorry = entity.Sorry,
                 Loading = entity.Loading,
+                ContactPageTitle = entity.ContactPageTitle
             };
         }
     }

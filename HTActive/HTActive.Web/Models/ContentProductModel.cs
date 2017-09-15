@@ -19,5 +19,6 @@ namespace HTActive.Web.Models
         public string Header3 { get; set; }
         public string Header3Content { get; set; }
         public string ButtonReadMore { get; set; }
+        public string ProductPageTitle { get; set; }
     }
 }

@@ -58,5 +58,7 @@ namespace HTActive.Entities
         public string Sorry { get; set; }
         [StringLength(512)]
         public string Loading { get; set; }
+        [StringLength(512)]
+        public string ContactPageTitle { get; set; }
     }
 }

@@ -31,7 +31,8 @@ namespace HTActive.Web.Mappers
                 AboutUsLeftContent = entity.AboutUsLeftContent,
                 AboutUsLeftUrl = entity.AboutUsLeftUrl,
                 WhyChooseTitle = entity.WhyChooseTitle,
-                WhyChooseContent = entity.WhyChooseContent
+                WhyChooseContent = entity.WhyChooseContent,
+                HomePageTitle = entity.HomePageTitle
             };
         }
     }

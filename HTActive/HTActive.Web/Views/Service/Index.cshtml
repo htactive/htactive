@@ -1,11 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Index";
-}
-@model HTActive.Web.Models.ServicePageViewModel
-
+﻿@model HTActive.Web.Models.ServicePageViewModel
 @{
     var contentService = Model?.ContentService;
     var services = Model?.Services ?? new List<HTActive.Web.Models.ServiceModel>();
+}
+@{
+    ViewData["Title"] = contentService?.ServicePageTitle ?? "Services";
 }
 <!-- banner start -->
 <!-- ================ -->
