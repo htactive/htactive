@@ -236,4 +236,56 @@ namespace HTActive.Repository
             return model.Id;
         }
 	}
+
+    public partial class ContentNewsRepository : BaseRepository<ContentNews, InstanceEntities>, IContentNewsRepository
+    {
+        public ContentNewsRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+		protected override int GetKeyId(ContentNews model)
+        {
+            return model.Id;
+        }
+	}
+
+    public partial class NewsRepository : BaseRepository<News, InstanceEntities>, INewsRepository
+    {
+        public NewsRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+		protected override int GetKeyId(News model)
+        {
+            return model.Id;
+        }
+	}
+
+    public partial class NewsLanguageRepository : BaseRepository<NewsLanguage, InstanceEntities>, INewsLanguageRepository
+    {
+        public NewsLanguageRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+		protected override int GetKeyId(NewsLanguage model)
+        {
+            return model.Id;
+        }
+	}
+
+    public partial class NewsLanguageImageRepository : BaseRepository<NewsLanguageImage, InstanceEntities>, INewsLanguageImageRepository
+    {
+        public NewsLanguageImageRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+		protected override int GetKeyId(NewsLanguageImage model)
+        {
+            return model.Id;
+        }
+	}
 }

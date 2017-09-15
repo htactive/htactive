@@ -189,6 +189,42 @@ namespace HTActive.Repository
 				(_ContentContactRepository = ServiceProvider.GetService<IContentContactRepository>());
 			}
 		}
+		private IContentNewsRepository _ContentNewsRepository;
+        public IContentNewsRepository ContentNewsRepository 
+		{ 
+			get
+			{
+				return _ContentNewsRepository ?? 
+				(_ContentNewsRepository = ServiceProvider.GetService<IContentNewsRepository>());
+			}
+		}
+		private INewsRepository _NewsRepository;
+        public INewsRepository NewsRepository 
+		{ 
+			get
+			{
+				return _NewsRepository ?? 
+				(_NewsRepository = ServiceProvider.GetService<INewsRepository>());
+			}
+		}
+		private INewsLanguageRepository _NewsLanguageRepository;
+        public INewsLanguageRepository NewsLanguageRepository 
+		{ 
+			get
+			{
+				return _NewsLanguageRepository ?? 
+				(_NewsLanguageRepository = ServiceProvider.GetService<INewsLanguageRepository>());
+			}
+		}
+		private INewsLanguageImageRepository _NewsLanguageImageRepository;
+        public INewsLanguageImageRepository NewsLanguageImageRepository 
+		{ 
+			get
+			{
+				return _NewsLanguageImageRepository ?? 
+				(_NewsLanguageImageRepository = ServiceProvider.GetService<INewsLanguageImageRepository>());
+			}
+		}
 		#endregion
     }
 	
@@ -214,6 +250,10 @@ namespace HTActive.Repository
 			services.AddScoped<IContentServiceRepository, ContentServiceRepository>();
 			services.AddScoped<IContentServicePartitionRepository, ContentServicePartitionRepository>();
 			services.AddScoped<IContentContactRepository, ContentContactRepository>();
+			services.AddScoped<IContentNewsRepository, ContentNewsRepository>();
+			services.AddScoped<INewsRepository, NewsRepository>();
+			services.AddScoped<INewsLanguageRepository, NewsLanguageRepository>();
+			services.AddScoped<INewsLanguageImageRepository, NewsLanguageImageRepository>();
 		}
     }
 }

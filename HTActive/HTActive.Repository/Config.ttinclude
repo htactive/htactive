@@ -20,6 +20,10 @@ new EntityMetadataRender(){Name = "ServiceLanguage"},
 new EntityMetadataRender(){Name = "ContentService"},
 new EntityMetadataRender(){Name = "ContentServicePartition"},
 new EntityMetadataRender(){Name = "ContentContact"},
+new EntityMetadataRender(){Name = "ContentNews"},
+new EntityMetadataRender(){Name = "News"},
+new EntityMetadataRender(){Name = "NewsLanguage"},
+new EntityMetadataRender(){Name = "NewsLanguageImage"},
 };
 #>
 

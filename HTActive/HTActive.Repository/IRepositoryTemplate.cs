@@ -74,4 +74,20 @@ namespace HTActive.Repository
     public partial interface IContentContactRepository : IBaseRepository<ContentContact>
     {
     }
+
+    public partial interface IContentNewsRepository : IBaseRepository<ContentNews>
+    {
+    }
+
+    public partial interface INewsRepository : IBaseRepository<News>
+    {
+    }
+
+    public partial interface INewsLanguageRepository : IBaseRepository<NewsLanguage>
+    {
+    }
+
+    public partial interface INewsLanguageImageRepository : IBaseRepository<NewsLanguageImage>
+    {
+    }
 }

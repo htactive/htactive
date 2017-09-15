@@ -1,7 +1,73 @@
-﻿
+﻿@model HTActive.Web.Models.NewsPageViewModel
 @{
-    ViewData["Title"] = "Index";
+    var contentNews = Model?.ContentNews;
+    var newses = Model?.Newses;
 }
+@{
+    ViewData["Title"] = contentNews?.NewsPageTitle ?? "News";
+}
+<section class="main-container">
+    <div class="container">
+        <div class="row">
 
-<h2>Index</h2>
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main col-md-12">
+                <div class="masonry-grid row">
+                    @foreach (var news in newses ?? new List<HTActive.Web.Models.NewsModel>())
+                    {
+                        var newsLanguage = news.NewsLanguages.OrderByDescending(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage).FirstOrDefault();
+                        <!-- masonry grid item start -->
+                        <div class="masonry-grid-item col-sm-6 col-md-4">
+                            <!-- blogpost start -->
+                            <article class="clearfix blogpost">
+                                @if (newsLanguage?.CoverType == HTActive.Common.NewsCoverTypeEnums.Image)
+                                {
+                                <div class="overlay-container">
+                                    <img src="@newsLanguage?.CoverSource" alt="@newsLanguage?.Title">
+                                    <div class="overlay">
+                                        <div class="overlay-links">
+                                            <a href="news-detail/@news?.Id/@newsLanguage?.Slug"><i class="fa fa-link"></i></a>
+                                            <a href="@newsLanguage?.CoverSource" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                                @if (newsLanguage?.CoverType == HTActive.Common.NewsCoverTypeEnums.Video)
+                                {
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="@newsLanguage.CoverSource"></iframe>
+                                    </div>
 
+                                }
+                                <div class="blogpost-body">
+                                    <div class="post-info">
+                                        <span class="day">@string.Format("{0:dd}",newsLanguage?.CreatedDate)</span>
+                                        <span class="month">@string.Format("{0:MM, 0:yyyy}",newsLanguage?.CreatedDate)</span>
+                                    </div>
+                                    <div class="blogpost-content">
+                                        <header>
+                                            <h2 class="title"><a href="news-detail/@news?.Id/@newsLanguage?.Slug">@newsLanguage?.Title</a></h2>
+                                            <div class="submitted"><i class="fa fa-user pr-5"></i> @contentNews?.ByText <a href="#">@newsLanguage?.Author</a></div>
+                                        </header>
+                                        <p>@newsLanguage?.Description</p>
+                                    </div>
+                                </div>
+                                <footer class="clearfix">
+                                    <ul class="links pull-left hidden">
+                                        <li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li>
+                                        <li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a></li>
+                                    </ul>
+                                    <a class="pull-right link" href="news-detail/@news?.Id/@newsLanguage?.Slug"><span>@contentNews.ReadMoreText</span></a>
+                                </footer>
+                            </article>
+                            <!-- blogpost end -->
+                        </div>
+                    <!-- masonry grid item end -->
+                    }
+                </div>
+                <!-- masonry grid end -->
+            </div>
+        </div>
+    </div>
+</section>

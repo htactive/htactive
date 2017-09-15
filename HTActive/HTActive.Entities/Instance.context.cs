@@ -39,6 +39,11 @@ namespace HTActive.Entities
         public DbSet<ContentService> ContentService { get; set; }
         public DbSet<ContentServicePartition> ContentServicePartition { get; set; }
         public DbSet<ContentContact> ContentContact { get; set; }
+        public DbSet<ContentNews> ContentNews { get; set; }
+        public DbSet<News> News { get; set; }
+        public DbSet<NewsLanguage> NewsLanguage { get; set; }
+        public DbSet<NewsLanguageImage> NewsLanguageImage { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -120,6 +125,16 @@ namespace HTActive.Entities
             modelBuilder.Entity<ContentService>().
                 HasMany(x => x.ContentServicePartitions)
                 .WithOne(x => x.ContentService)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<News>().
+                HasMany(x => x.NewsLanguages)
+                .WithOne(x => x.News)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<NewsLanguage>().
+                HasMany(x => x.NewsLanguageImages)
+                .WithOne(x => x.NewsLanguage)
                 .OnDelete(DeleteBehavior.Cascade);
 
         }

@@ -5,6 +5,7 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
+    <Configurations>Debug;Release;Release Staging</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -61,18 +62,6 @@
     <None Include="wwwroot\assets\plugins\jquery.validate.js" />
     <None Include="wwwroot\assets\plugins\magnific-popup\jquery.magnific-popup.min.js" />
     <None Include="wwwroot\assets\plugins\modernizr.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\angular-resource.min.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\angular-resource.min.js.map" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\angular-ui-router.min.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\angular.min.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\angular.min.js.map" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\app.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\ngcart\ngCart.directives.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\ngcart\ngCart.directives_test.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\ngcart\ngCart.fulfilment.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\ngcart\ngCart.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\ngcart\ngCart.min.js" />
-    <None Include="wwwroot\assets\plugins\ngcart\js\ngcart\ngCart_test.js" />
     <None Include="wwwroot\assets\plugins\owl-carousel\owl.carousel.js" />
     <None Include="wwwroot\assets\plugins\rs-plugin\js\jquery.themepunch.revolution.min.js" />
     <None Include="wwwroot\assets\plugins\rs-plugin\js\jquery.themepunch.tools.min.js" />
@@ -92,6 +81,18 @@
     <Folder Include="Data\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Staging.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
