@@ -19,6 +19,7 @@ namespace HTActive.Web.Mappers
                 Src = entity.Src,
                 NewsLanguageId = entity.NewsLanguageId,
                 Priority = entity.Priority,
+                CoverType = entity.CoverType
             };
         }
     }

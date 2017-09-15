@@ -12,9 +12,10 @@ using System;
 namespace HTActive.Web.Migrations
 {
     [DbContext(typeof(InstanceEntities))]
-    partial class InstanceEntitiesModelSnapshot : ModelSnapshot
+    [Migration("20170915144546_thuan_000018")]
+    partial class thuan_000018
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -554,7 +555,7 @@ namespace HTActive.Web.Migrations
                         .HasMaxLength(512);
 
                     b.Property<string>("Html")
-                        .HasMaxLength(2147483647);
+                        .HasMaxLength(4000);
 
                     b.Property<int?>("Language");
 

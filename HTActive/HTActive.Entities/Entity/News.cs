@@ -37,7 +37,7 @@ namespace HTActive.Entities
         [StringLength(512)]
         public string Slug { get; set; }
         public DateTime? CreatedDate { get; set; }
-        [StringLength(4000)]
+        [StringLength(int.MaxValue)]
         public string Html { get; set; }
         public List<NewsLanguageImage> NewsLanguageImages { get; set; }
     }
@@ -53,5 +53,6 @@ namespace HTActive.Entities
         public string Src { get; set; }
         public string Alt { get; set; }
         public int? Priority { get; set; }
+        public NewsCoverTypeEnums? CoverType { get; set; }
     }
 }

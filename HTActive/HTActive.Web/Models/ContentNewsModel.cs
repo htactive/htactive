@@ -14,5 +14,7 @@ namespace HTActive.Web.Models
         public string ReadMoreText { get; set; }
         public string ByText { get; set; }
         public string NewsPageTitle { get; set; }
+        public string ShareThisText { get; set; }
+        public string RelatedText { get; set; }
     }
 }

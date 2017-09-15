@@ -43,7 +43,7 @@
                                 <div class="blogpost-body">
                                     <div class="post-info">
                                         <span class="day">@string.Format("{0:dd}",newsLanguage?.CreatedDate)</span>
-                                        <span class="month">@string.Format("{0:MM, 0:yyyy}",newsLanguage?.CreatedDate)</span>
+                                        <span class="month">@string.Format("{0:MMM} {0:yyyy}",newsLanguage?.CreatedDate)</span>
                                     </div>
                                     <div class="blogpost-content">
                                         <header>
@@ -53,7 +53,7 @@
                                         <p>@newsLanguage?.Description</p>
                                     </div>
                                 </div>
-                                <footer class="clearfix">
+                                <footer class="clearfix hidden">
                                     <ul class="links pull-left hidden">
                                         <li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li>
                                         <li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a></li>

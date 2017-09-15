@@ -18,7 +18,9 @@ namespace HTActive.Web.Mappers
                 ByText = entity.ByText,
                 Language = entity.Language,
                 ReadMoreText = entity.ReadMoreText,
-                NewsPageTitle = entity.NewsPageTitle
+                NewsPageTitle = entity.NewsPageTitle,
+                RelatedText = entity.RelatedText,
+                ShareThisText = entity.ShareThisText
             };
         }
     }

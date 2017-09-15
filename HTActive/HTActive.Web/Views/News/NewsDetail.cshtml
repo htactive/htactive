@@ -1,0 +1,103 @@
+﻿@model HTActive.Web.Models.NewsDetailViewModel
+@{
+    var news = Model.News;
+    var newsLanguage = Model?.News?.NewsLanguages?.OrderByDescending(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage).FirstOrDefault();
+    var contentNews = Model?.ContentNews;
+}
+@{
+    ViewData["Title"] = newsLanguage?.Title ?? "News Detail";
+}
+
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container">
+
+    <div class="container">
+        <div class="row">
+
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main col-md-8">
+
+                <!-- page-title start -->
+                <!-- ================ -->
+                <h1 class="page-title">@newsLanguage?.Title</h1>
+                <!-- page-title end -->
+                <!-- blogpost start -->
+                <article class="clearfix blogpost full">
+                    <div class="blogpost-body">
+                        <div class="side">
+                            <div class="post-info">
+                                <span class="day">@string.Format("{0:dd}", newsLanguage?.CreatedDate)</span>
+                                <span class="month">@string.Format("{0:MMM} {0:yyyy}", newsLanguage?.CreatedDate)</span>
+                            </div>
+                            <div id="affix"><span class="share">@contentNews?.ShareThisText</span><div id="share"></div></div>
+                        </div>
+                        <div class="blogpost-content">
+                            <header>
+                                <div class="submitted"><i class="fa fa-user pr-5"></i> @contentNews.ByText <a href="#">@newsLanguage?.Author</a></div>
+                            </header>
+                            @{
+                                var images = newsLanguage?.NewsLanguageImages ?? new List<HTActive.Web.Models.NewsLanguageImageModel>();
+                            }
+                            @if (images.Count > 0)
+                            {
+                                <div class="owl-carousel content-slider-with-controls">
+                                    @foreach (var image in images)
+                                    {
+                                        if (image.CoverType == HTActive.Common.NewsCoverTypeEnums.Video)
+                                        {
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe class="embed-responsive-item" src="@image.Src"></iframe>
+                                            </div>
+                                        }
+                                        else
+                                        {
+
+                                            <div class="overlay-container">
+                                                <img src="@image.Src" alt="@image.Alt">
+                                                <a href="@image.Src" class="popup-img overlay" title="@image.Alt"><i class="fa fa-search-plus"></i></a>
+                                            </div>
+
+                                        }
+                                    }
+                                </div>
+                            }
+                            @Html.Raw(newsLanguage?.Html ?? string.Empty)
+                        </div>
+                    </div>
+                </article>
+                <!-- blogpost end -->
+            </div>
+            <!-- main end -->
+            <!-- sidebar start -->
+            <aside class="col-md-3 col-md-offset-1">
+                <div class="sidebar">
+                    <div class="block clearfix">
+                        <h3 class="title">@contentNews?.RelatedText</h3>
+                        <div class="separator"></div>
+                        <div class="image-box">
+                            @*<div class="overlay-container">
+                                <img src="images/blog-sidebar.jpg" alt="">
+                                <div class="overlay">
+                                    <div class="overlay-links">
+                                        <a href="blog-post.html"><i class="fa fa-link"></i></a>
+                                        <a href="images/blog-sidebar.jpg" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>*@
+                            <div class="image-box-body">
+                                <h3 class="title"><a href="blog-post.html">Post Title</a></h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                                <a href="blog-post.html" class="link"><span>Read More</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!-- sidebar end -->
+
+        </div>
+    </div>
+</section>
+<!-- main-container end -->

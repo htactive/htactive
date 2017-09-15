@@ -20,5 +20,9 @@ namespace HTActive.Entities
         public string ByText { get; set; }
         [StringLength(512)]
         public string NewsPageTitle { get; set; }
+        [StringLength(512)]
+        public string ShareThisText { get; set; }
+        [StringLength(512)]
+        public string RelatedText { get; set; }
     }
 }

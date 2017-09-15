@@ -36,7 +36,7 @@ namespace HTActive.Web.Models
         public int Id { get; set; }
         public int NewsLanguageId { get; set; }
         public NewsLanguageModel NewsLanguage { get; set; }
-
+        public NewsCoverTypeEnums? CoverType { get; set; }
         public string Src { get; set; }
         public string Alt { get; set; }
         public int? Priority { get; set; }
