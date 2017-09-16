@@ -288,4 +288,17 @@ namespace HTActive.Repository
             return model.Id;
         }
 	}
+
+    public partial class NewsRelatedNewsRepository : BaseRepository<NewsRelatedNews, InstanceEntities>, INewsRelatedNewsRepository
+    {
+        public NewsRelatedNewsRepository(IBaseUnitOfWork<InstanceEntities> unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+		protected override int GetKeyId(NewsRelatedNews model)
+        {
+            return model.Id;
+        }
+	}
 }

@@ -90,4 +90,8 @@ namespace HTActive.Repository
     public partial interface INewsLanguageImageRepository : IBaseRepository<NewsLanguageImage>
     {
     }
+
+    public partial interface INewsRelatedNewsRepository : IBaseRepository<NewsRelatedNews>
+    {
+    }
 }

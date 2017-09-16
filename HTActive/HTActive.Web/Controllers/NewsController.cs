@@ -67,6 +67,26 @@ namespace HTActive_Web.Controllers
             viewmodel.News = n;
             var contentEntity = this.InstanceRepository.ContentNewsRepository.GetAll().OrderByDescending(x => x.Language == this.SiteLanguage).FirstOrDefault();
             viewmodel.ContentNews = Mapper.ToModel(contentEntity);
+
+            var relatedItems = this.InstanceRepository.NewsRelatedNewsRepository.GetAll().Include("RelatedNews.NewsLanguages.NewsLanguageImages").Where(x => x.CurrentNewsId == n.Id).OrderBy(x => x.Priority).Take(5).ToList();
+            viewmodel.RelatedNewses = relatedItems.Select(x =>
+            {
+                var nModel = Mapper.ToModel(x.RelatedNews);
+                if (nModel != null)
+                {
+                    nModel.NewsLanguages = x?.RelatedNews?.NewsLanguages.Select(k =>
+                    {
+                        var nl = Mapper.ToModel(k);
+                        if (nl != null)
+                        {
+                            nl.NewsLanguageImages = k?.NewsLanguageImages.Select(Mapper.ToModel).ToList();
+                        }
+                        return nl;
+                    }).ToList();
+                }
+                return nModel;
+            }).ToList();
+
             ViewBag.Tab = "news";
             return View(viewmodel);
         }

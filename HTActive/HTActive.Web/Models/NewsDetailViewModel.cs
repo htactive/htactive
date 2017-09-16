@@ -9,5 +9,6 @@ namespace HTActive.Web.Models
     {
         public NewsModel News { get; set; }
         public ContentNewsModel ContentNews { get; set; }
+        public List<NewsModel> RelatedNewses { get; set; }
     }
 }

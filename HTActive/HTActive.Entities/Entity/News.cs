@@ -15,6 +15,11 @@ namespace HTActive.Entities
         public int Priority { get; set; }
 
         public List<NewsLanguage> NewsLanguages { get; set; }
+
+        [ForeignKey("CurrentNewsId")]
+        public List<NewsRelatedNews> CurrentNewsRelatedNewses { get; set; }
+        [ForeignKey("RelatedNewsId")]
+        public List<NewsRelatedNews> RelatedNewsRelatedNewses { get; set; }
     }
     public class NewsLanguage
     {
@@ -54,5 +59,18 @@ namespace HTActive.Entities
         public string Alt { get; set; }
         public int? Priority { get; set; }
         public NewsCoverTypeEnums? CoverType { get; set; }
+    }
+    public class NewsRelatedNews
+    {
+        [Key]
+        public int Id { get; set; }
+        public int? CurrentNewsId { get; set; }
+        public int? RelatedNewsId { get; set; }
+        public int? Priority { get; set; }
+
+        [ForeignKey("CurrentNewsId")]
+        public News CurrentNews { get; set; }
+        [ForeignKey("RelatedNewsId")]
+        public News RelatedNews { get; set; }
     }
 }

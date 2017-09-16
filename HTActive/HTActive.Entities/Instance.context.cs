@@ -43,7 +43,7 @@ namespace HTActive.Entities
         public DbSet<News> News { get; set; }
         public DbSet<NewsLanguage> NewsLanguage { get; set; }
         public DbSet<NewsLanguageImage> NewsLanguageImage { get; set; }
-
+        public DbSet<NewsRelatedNews> NewsRelatedNews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -130,6 +130,14 @@ namespace HTActive.Entities
             modelBuilder.Entity<News>().
                 HasMany(x => x.NewsLanguages)
                 .WithOne(x => x.News)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<News>().
+                HasMany(x => x.CurrentNewsRelatedNewses)
+                .WithOne(x => x.CurrentNews)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<News>().
+                HasMany(x => x.RelatedNewsRelatedNewses)
+                .WithOne(x => x.RelatedNews)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<NewsLanguage>().

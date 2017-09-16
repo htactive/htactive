@@ -76,22 +76,41 @@
                     <div class="block clearfix">
                         <h3 class="title">@contentNews?.RelatedText</h3>
                         <div class="separator"></div>
-                        <div class="image-box">
-                            @*<div class="overlay-container">
-                                <img src="images/blog-sidebar.jpg" alt="">
-                                <div class="overlay">
-                                    <div class="overlay-links">
-                                        <a href="blog-post.html"><i class="fa fa-link"></i></a>
-                                        <a href="images/blog-sidebar.jpg" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
+                        @{
+                            var relatedNewses = Model?.RelatedNewses;
+                        }
+                        @if (relatedNewses.Count > 0)
+                        {
+                            @foreach (var relatedNews in relatedNewses)
+                            {
+                                var relatedNewsLanguage = relatedNews.NewsLanguages.OrderByDescending(x => x.Language == (HTActive.Common.SiteLanguageTypeEnums)ViewBag.SiteLanguage).FirstOrDefault();
+                                <div class="image-box">
+                                    @if (relatedNewsLanguage?.CoverType == HTActive.Common.NewsCoverTypeEnums.Image)
+                                    {
+                                        <div class="overlay-container">
+                                            <img src="@relatedNewsLanguage?.CoverSource" alt="">
+                                            <div class="overlay">
+                                                <div class="overlay-links">
+                                                    <a href="@relatedNewsLanguage?.CoverSource" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    @if (relatedNewsLanguage?.CoverType == HTActive.Common.NewsCoverTypeEnums.Video)
+                                    {
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item" src="@relatedNewsLanguage?.CoverSource"></iframe>
+                                        </div>
+
+                                    }
+                                    <div class="image-box-body">
+                                        <h3 class="title"><a href="news-detail/@relatedNews.Id/@relatedNewsLanguage?.Slug">@relatedNewsLanguage.Title</a></h3>
+                                        <p>@relatedNewsLanguage?.Description</p>
+                                        <a href="news-detail/@relatedNews.Id/@relatedNewsLanguage?.Slug" class="link"><span>@contentNews.ReadMoreText</span></a>
                                     </div>
                                 </div>
-                            </div>*@
-                            <div class="image-box-body">
-                                <h3 class="title"><a href="blog-post.html">Post Title</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                                <a href="blog-post.html" class="link"><span>Read More</span></a>
-                            </div>
-                        </div>
+                            }
+                        }
                     </div>
                 </div>
             </aside>

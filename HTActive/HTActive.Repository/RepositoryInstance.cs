@@ -225,6 +225,15 @@ namespace HTActive.Repository
 				(_NewsLanguageImageRepository = ServiceProvider.GetService<INewsLanguageImageRepository>());
 			}
 		}
+		private INewsRelatedNewsRepository _NewsRelatedNewsRepository;
+        public INewsRelatedNewsRepository NewsRelatedNewsRepository 
+		{ 
+			get
+			{
+				return _NewsRelatedNewsRepository ?? 
+				(_NewsRelatedNewsRepository = ServiceProvider.GetService<INewsRelatedNewsRepository>());
+			}
+		}
 		#endregion
     }
 	
@@ -254,6 +263,7 @@ namespace HTActive.Repository
 			services.AddScoped<INewsRepository, NewsRepository>();
 			services.AddScoped<INewsLanguageRepository, NewsLanguageRepository>();
 			services.AddScoped<INewsLanguageImageRepository, NewsLanguageImageRepository>();
+			services.AddScoped<INewsRelatedNewsRepository, NewsRelatedNewsRepository>();
 		}
     }
 }
