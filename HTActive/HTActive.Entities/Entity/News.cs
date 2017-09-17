@@ -13,6 +13,7 @@ namespace HTActive.Entities
         [Key]
         public int Id { get; set; }
         public int Priority { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         public List<NewsLanguage> NewsLanguages { get; set; }
 
@@ -41,7 +42,6 @@ namespace HTActive.Entities
         public string Author { get; set; }
         [StringLength(512)]
         public string Slug { get; set; }
-        public DateTime? CreatedDate { get; set; }
         [StringLength(int.MaxValue)]
         public string Html { get; set; }
         public List<NewsLanguageImage> NewsLanguageImages { get; set; }

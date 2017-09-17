@@ -16,6 +16,7 @@ namespace HTActive.Web.Mappers
             {
                 Id = entity.Id,
                 Priority = entity.Priority,
+                CreatedDate = entity.CreatedDate
             };
         }
     }

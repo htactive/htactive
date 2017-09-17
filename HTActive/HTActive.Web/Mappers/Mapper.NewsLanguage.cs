@@ -21,7 +21,6 @@ namespace HTActive.Web.Mappers
                 CoverSource = entity.CoverSource,
                 Slug = entity.Slug,
                 CoverType = entity.CoverType,
-                CreatedDate = entity.CreatedDate,
                 Description = entity.Description,
                 Html = entity.Html,
                 Title = entity.Title

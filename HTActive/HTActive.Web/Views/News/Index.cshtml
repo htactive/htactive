@@ -1,7 +1,7 @@
 ﻿@model HTActive.Web.Models.NewsPageViewModel
 @{
     var contentNews = Model?.ContentNews;
-    var newses = Model?.Newses;
+    var newses = Model?.Newses?.OrderByDescending(x => x.CreatedDate).ToList();
 }
 @{
     ViewData["Title"] = contentNews?.NewsPageTitle ?? "News";
@@ -23,27 +23,26 @@
                             <article class="clearfix blogpost">
                                 @if (newsLanguage?.CoverType == HTActive.Common.NewsCoverTypeEnums.Image)
                                 {
-                                <div class="overlay-container">
-                                    <img src="@newsLanguage?.CoverSource" alt="@newsLanguage?.Title">
-                                    <div class="overlay">
-                                        <div class="overlay-links">
-                                            <a href="news-detail/@news?.Id/@newsLanguage?.Slug"><i class="fa fa-link"></i></a>
-                                            <a href="@newsLanguage?.CoverSource" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
+                                    <div class="overlay-container">
+                                        <img src="@newsLanguage?.CoverSource" alt="@newsLanguage?.Title">
+                                        <div class="overlay">
+                                            <div class="overlay-links">
+                                                <a href="news-detail/@news?.Id/@newsLanguage?.Slug"><i class="fa fa-link"></i></a>
+                                                <a href="@newsLanguage?.CoverSource" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 }
                                 @if (newsLanguage?.CoverType == HTActive.Common.NewsCoverTypeEnums.Video)
                                 {
                                     <div class="embed-responsive embed-responsive-16by9">
                                         <iframe class="embed-responsive-item" src="@newsLanguage.CoverSource"></iframe>
                                     </div>
-
                                 }
                                 <div class="blogpost-body">
                                     <div class="post-info">
-                                        <span class="day">@string.Format("{0:dd}",newsLanguage?.CreatedDate)</span>
-                                        <span class="month">@string.Format("{0:MMM} {0:yyyy}",newsLanguage?.CreatedDate)</span>
+                                        <span class="day">@string.Format("{0:dd}", news?.CreatedDate)</span>
+                                        <span class="month">@string.Format("{0:MMM} {0:yyyy}", news?.CreatedDate)</span>
                                     </div>
                                     <div class="blogpost-content">
                                         <header>
