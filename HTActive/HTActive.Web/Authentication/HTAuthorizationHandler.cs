@@ -11,7 +11,6 @@ using System.IO;
 using HTActive.Common;
 using System.Diagnostics;
 using HTActive.Web.Helpers;
-using HTActive.Common;
 
 namespace HTActive.Web.Authentication
 {

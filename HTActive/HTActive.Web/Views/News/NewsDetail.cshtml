@@ -6,6 +6,10 @@
 }
 @{
     ViewData["Title"] = newsLanguage?.Title ?? "News Detail";
+    ViewBag.FB_SiteName = "HT Active - " + contentNews.NewsPageTitle;
+    ViewBag.FB_Image = newsLanguage?.CoverSource;
+    ViewBag.FB_Title = newsLanguage?.Title;
+    ViewBag.FB_Description = newsLanguage?.Description;
 }
 
 <!-- main-container start -->

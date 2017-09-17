@@ -559,7 +559,7 @@
 					facebook: true,
 					googlePlus: true
 				},
-				template: '<ul class="social-links clearfix"><li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li><li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li><li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li></ul>',
+				template: '<ul class="social-links clearfix"><li class="facebook"><a><i class="fa fa-facebook"></i></a></li><li class="twitter"><a><i class="fa fa-twitter"></i></a></li><li class="googleplus"><a ><i class="fa fa-google-plus"></i></a></li></ul>',
 				enableHover: false,
 				enableTracking: true,
 				render: function (api, options) {

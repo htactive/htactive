@@ -25,7 +25,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <base href="@baseHref">
-    <title>@(ViewBag.Title ?? "HT Active")</title>
+    <title>HT Active - @(ViewBag.Title ?? "")</title>
     <meta name="description" content="@(ViewBag.Description ?? "Thiet Ke Web Da Nang - Web design Viet Nam")">
     <meta name="fragment" content="!">
     <!-- Apple META -->
@@ -34,12 +34,12 @@
     <meta name="google-site-verification" content="hDDwizwaFo2Dr1ude09bDgGAw7FwqynIfYbhu6lQElw">
 
     <!-- Facebook META -->
-    <meta property="fb:app_id" content="APP_ID">
-    <meta property="og:site_name" content="HT Active">
-    <meta property="og:title" content="HT Active">
-    <meta property="og:description" content="Thiet Ke Web Da Nang - Web design Viet Nam">
-    <meta property="og:url" content="http://htactive.com/">
-    <meta property="og:image" content="modules/core/client/img/brand/logo.png">
+    <meta property="fb:app_id" content="@(ViewBag.FB_AppId ?? "APP_ID")">
+    <meta property="og:site_name" content="@(ViewBag.FB_SiteName ?? "HT Active")">
+    <meta property="og:title" content="@(ViewBag.FB_Title ?? "HT Active")">
+    <meta property="og:description" content="@(ViewBag.FB_Description ?? "Thiet Ke Web Da Nang - Web design Viet Nam")">
+    <meta property="og:url" content="@(ViewBag.FB_Url ?? "http://htactive.com/")">
+    <meta property="og:image" content="@(ViewBag.FB_Image ?? "/modules/core/client/img/brand/logo.png")">
     <meta property="og:type" content="website">
 
     <!-- Twitter META -->
@@ -491,7 +491,7 @@
 
     <!-- Custom Scripts -->
     <script type="text/javascript" src="/assets/voc/js/custom.js"></script>
-    @*<script type="text/javascript" src="lib/sharrre/dist/jquery.sharrre.min.js"></script>*@
+    <script type="text/javascript" src="/assets/plugins/jquery.sharrre.min.js"></script>
     <!-- Color Switcher (Remove these lines) -->
     <script type="text/javascript" src="/assets/plugins/style-switcher/style-switcher.js"></script>
     <!-- ngCart -->

@@ -5,7 +5,7 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
-    <Configurations>Debug;Release;Release Staging</Configurations>
+    <Configurations>Debug;Release;Release Staging;Release_Stg</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,32 +29,6 @@
     <None Include="wwwroot\assets\bootstrap\js\bootstrap.min.js" />
     <None Include="wwwroot\assets\fonts\font-awesome\fonts\fontawesome-webfont.svg" />
     <None Include="wwwroot\assets\fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\animated.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\bordered-pulled.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\core.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\fixed-width.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\font-awesome.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\icons.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\larger.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\list.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\mixins.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\path.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\rotated-flipped.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\stacked.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\less\variables.less" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\font-awesome.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_animated.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_bordered-pulled.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_core.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_fixed-width.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_icons.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_larger.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_list.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_mixins.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_path.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_rotated-flipped.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_stacked.scss" />
-    <None Include="wwwroot\assets\fonts\font-awesome\scss\_variables.scss" />
     <None Include="wwwroot\assets\plugins\isotope\isotope.pkgd.min.js" />
     <None Include="wwwroot\assets\plugins\jquery.appear.js" />
     <None Include="wwwroot\assets\plugins\jquery.countTo.js" />
@@ -85,10 +59,10 @@
 
   <ItemGroup>
     <Content Update="appsettings.Development.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
     <Content Update="appsettings.Production.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
     <Content Update="appsettings.Staging.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
