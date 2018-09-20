@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="ClientApp\dist\vendor-manifest.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\assets\bootstrap\js\bootstrap.min.js" />
     <None Include="wwwroot\assets\fonts\font-awesome\fonts\fontawesome-webfont.svg" />
     <None Include="wwwroot\assets\fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
