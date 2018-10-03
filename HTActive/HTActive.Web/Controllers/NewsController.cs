@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using HTActive.Web.Mappers;
 using Microsoft.EntityFrameworkCore;
 using HTActive.Web.Models;
+using HTActive.Entities;
 
 namespace HTActive_Web.Controllers
 {
@@ -89,6 +90,40 @@ namespace HTActive_Web.Controllers
 
             ViewBag.Tab = "news";
             return View(viewmodel);
+        }
+
+        [HttpPost, Route("api-post-news")]
+        public bool PostNews([FromBody]NewsLanguageModel model)
+        {
+            var news_entity = new News();
+            news_entity.Id = 0;
+            news_entity.CreatedDate = DateTime.Now;
+            news_entity.Priority = 1;
+           
+            try
+            {
+                news_entity.NewsLanguages = new List<NewsLanguage>();
+                news_entity.NewsLanguages.Add(new NewsLanguage()
+                {
+                    Id = 0,
+                    Author = model.Author,
+                    CoverSource = model.CoverSource,
+                    CoverType = model.CoverType,
+                    Description = model.Description,
+                    Html = model.Html,
+                    Language = model.Language,
+                    NewsId = news_entity.Id,
+                    Title = model.Title,
+                    Slug = model.Slug
+                });
+                this.InstanceRepository.NewsRepository.Save(news_entity);
+                this.InstanceRepository.Commit();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
